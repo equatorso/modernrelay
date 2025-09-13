@@ -5,11 +5,11 @@ import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } f
 const chartConfig = {
     desktop: {
         label: 'Desktop',
-        color: 'var(--color-primary)',
+        color: 'var(--color-emerald-500)',
     },
     mobile: {
         label: 'Mobile',
-        color: 'var(--color-indigo-300)',
+        color: 'var(--color-indigo-400)',
     },
 } satisfies ChartConfig
 
@@ -25,7 +25,7 @@ const chartData = [
 export const ChartIllustration = () => {
     return (
         <ChartContainer
-            className="-mb-4 aspect-auto h-36"
+            className="-mb-4 aspect-auto h-72"
             config={chartConfig}>
             <AreaChart
                 accessibilityLayer
