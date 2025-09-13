@@ -1,13 +1,14 @@
 'use client'
 import Link from 'next/link'
-import { Logo } from '@/components/logo'
+import { Logo, LogoIcon } from '@/components/logo'
 import { Button } from '@/components/ui/button'
 import React from 'react'
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from '@/components/ui/navigation-menu'
-import { Menu, X, Shield, SquareActivity, Sparkles, Cpu, Gem, ShoppingBag, BookOpen, Notebook, Croissant, Smartphone, Rocket, Cloud, Bot } from 'lucide-react'
+import { Headset, Menu, X, Shield, SquareActivity, Sparkles, Cpu, Gem, ShoppingBag, GraduationCap, BookOpen, Notebook, Croissant } from 'lucide-react'
 import { useMedia } from '@/hooks/use-media'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { cn } from '@/lib/utils'
+import { motion, AnimatePresence } from 'motion/react'
 
 interface FeatureLink {
     href: string
@@ -42,44 +43,11 @@ const features: FeatureLink[] = [
         description: 'Keep your data safe and secure',
         icon: <Shield className="stroke-foreground fill-blue-500/15" />,
     },
-]
-
-const moreFeatures: FeatureLink[] = [
-    {
-        href: '#ux',
-        name: 'Automation',
-        description: 'Automate your workflow',
-        icon: <Bot className="stroke-foreground fill-yellow-500/15" />,
-    },
-    {
-        href: '#performance',
-        name: 'Scalability',
-        description: 'Scale your application',
-        icon: <Rocket className="stroke-foreground fill-orange-500/15" />,
-    },
-    {
-        href: '#security',
-        name: 'Backup',
-        description: 'Keep your data backed up',
-        icon: <Cloud className="stroke-foreground fill-teal-500/15" />,
-    },
-    {
-        href: '#security',
-        name: 'Security',
-        description: 'Keep your data safe and secure',
-        icon: <Shield className="stroke-foreground fill-blue-500/15" />,
-    },
     {
         href: '#support',
-        name: 'Partnerships',
+        name: 'Customer Support',
         description: 'Get help when you need it',
-        icon: <Gem className="stroke-foreground fill-pink-500/15" />,
-    },
-    {
-        href: '#mobile',
-        name: 'Mobile App',
-        description: 'Get help when you need it',
-        icon: <Smartphone className="stroke-foreground fill-zinc-500/15" />,
+        icon: <Headset className="stroke-foreground fill-pink-500/15" />,
     },
 ]
 
@@ -89,6 +57,12 @@ const useCases: FeatureLink[] = [
         name: 'Marketplace',
         description: 'Find and buy AI tools',
         icon: <ShoppingBag className="stroke-foreground fill-emerald-500/25" />,
+    },
+    {
+        href: '#performance',
+        name: 'Guides',
+        description: 'Learn how to use AI tools',
+        icon: <GraduationCap className="stroke-foreground fill-indigo-500/15" />,
     },
     {
         href: '#security',
@@ -101,12 +75,6 @@ const useCases: FeatureLink[] = [
         name: 'Partnerships',
         description: 'Get help when you need it',
         icon: <Gem className="stroke-foreground fill-pink-500/15" />,
-    },
-    {
-        href: '#mobile',
-        name: 'Mobile App',
-        description: 'Get help when you need it',
-        icon: <Smartphone className="stroke-foreground fill-zinc-500/15" />,
     },
 ]
 
@@ -131,12 +99,12 @@ const mobileLinks: MobileLink[] = [
 
 export default function Header() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
-    const [isScrolled, setIsScrolled] = React.useState(false)
     const isLarge = useMedia('(min-width: 64rem)')
+    const [isScrolled, setIsScrolled] = React.useState(false)
 
     React.useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50)
+            setIsScrolled(window.scrollY > 75)
         }
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
@@ -157,31 +125,20 @@ export default function Header() {
     return (
         <header
             role="banner"
-            data-state={isMobileMenuOpen ? 'active' : 'inactive'}
+            data-theme="dark"
             {...(isScrolled && { 'data-scrolled': true })}
-            className="has-data-[state=open]:h-screen has-data-[state=open]:backdrop-blur has-data-[state=open]:bg-background/50 fixed inset-x-0 top-0 z-50">
-            <div
-                className={cn(
-                    'h-18 absolute inset-x-0 top-0 z-50 border-transparent ring-1 ring-transparent transition-all duration-300',
-                    'in-data-scrolled:border-foreground/5 in-data-scrolled:border-b in-data-scrolled:bg-background/75 in-data-scrolled:backdrop-blur',
-                    'has-data-[state=open]:ring-foreground/5 has-data-[state=open]:bg-card/75 has-data-[state=open]:shadow-lg has-data-[state=open]:backdrop-blur has-data-[state=open]:border-b has-data-[state=open]:shadow-black/10 has-data-[state=open]:h-[calc(var(--navigation-menu-viewport-height)+3.4rem)]',
-                    'max-lg:in-data-[state=active]:h-screen max-lg:in-data-[state=active]:bg-background/75 max-lg:in-data-[state=active]:backdrop-blur max-lg:h-14 max-lg:overflow-hidden max-lg:border-b'
-                )}>
-                <div className="mx-auto max-w-6xl px-6 lg:px-12">
-                    <div className="relative flex flex-wrap items-center justify-between lg:py-5">
-                        <div
-                            aria-hidden
-                            className="in-has-data-[state=open]:block absolute inset-x-0 bottom-0 hidden h-px bg-[length:4px_1px] bg-repeat-x opacity-20 [background-image:linear-gradient(90deg,var(--color-foreground)_1px,transparent_1px)]"
-                        />
-                        <div className="flex justify-between gap-8 max-lg:h-14 max-lg:w-full max-lg:border-b">
+            data-state={isMobileMenuOpen ? 'active' : 'inactive'}
+            className="bg-background [--color-popover:color-mix(in_oklch,var(--color-muted)_25%,var(--color-background))]">
+            <div className={cn('relative', 'not-in-data-scrolled:has-data-[state=open]:[--viewport-translate:-4rem]', !isLarge && 'in-data-scrolled:border-b in-data-scrolled:border-foreground/5 in-data-scrolled:backdrop-blur in-data-scrolled:bg-card/50 fixed inset-x-0 top-0 z-50 h-16 overflow-hidden', 'max-lg:in-data-[state=active]:bg-card/50 max-lg:in-data-[state=active]:h-screen max-lg:in-data-[state=active]:backdrop-blur')}>
+                <div className="mx-auto max-w-6xl px-6">
+                    <div className="max-lg:not-in-data-[state=active]:h-16 relative flex flex-wrap items-center justify-between py-1.5 lg:py-5">
+                        <div className="max-lg:in-data-[state=active]:border-foreground/5 max-lg:in-data-[state=active]:border-b flex items-center justify-between gap-8 max-lg:h-14 max-lg:w-full">
                             <Link
                                 href="/"
-                                aria-label="home"
-                                className="flex items-center space-x-2">
-                                <Logo />
+                                aria-label="home">
+                                <Logo className="h-5" />
                             </Link>
 
-                            {isLarge && <NavMenu />}
                             <button
                                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                                 aria-label={isMobileMenuOpen == true ? 'Close Menu' : 'Open Menu'}
@@ -191,23 +148,67 @@ export default function Header() {
                             </button>
                         </div>
 
+                        {isLarge && (
+                            <motion.div
+                                animate={{ width: 'fit-content', gap: 8 }}
+                                className="bg-popover/50 ring-background inset-shadow-sm inset-shadow-white/[0.02] border-foreground/5 fixed inset-x-0 z-50 mx-auto size-fit max-w-xl rounded-xl border p-1.5 shadow-xl shadow-black/25 ring-1 backdrop-blur-xl">
+                                <div className="flex items-center">
+                                    <AnimatePresence>
+                                        {isScrolled && (
+                                            <motion.div
+                                                key="logo"
+                                                initial={{ opacity: 0, width: 0 }}
+                                                animate={{ opacity: 1, width: '3rem' }}
+                                                exit={{ opacity: 0, width: 0 }}
+                                                className="before:bg-foreground/10 before:border-background/75 relative before:absolute before:inset-y-1 before:right-2 before:w-0.5 before:rounded before:border-r">
+                                                <Link
+                                                    href="/"
+                                                    aria-label="home"
+                                                    className="hover:bg-foreground/5 flex size-7 rounded-md">
+                                                    <LogoIcon className="m-auto size-4" />
+                                                </Link>
+                                            </motion.div>
+                                        )}
+                                        <NavMenu key="nav-menu" />
+                                        {isScrolled && (
+                                            <motion.div
+                                                key="sign-in-button"
+                                                initial={{ opacity: 0, width: 0 }}
+                                                animate={{ opacity: 1, width: 'auto' }}
+                                                exit={{ opacity: 0, width: 0 }}
+                                                className="overflow-hidden">
+                                                <Button
+                                                    asChild
+                                                    size="sm"
+                                                    variant="outline"
+                                                    className="border-foreground/10 ml-4 h-7 ring-0">
+                                                    <Link href="#">
+                                                        <span>Sign In</span>
+                                                    </Link>
+                                                </Button>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+                            </motion.div>
+                        )}
                         {!isLarge && isMobileMenuOpen && <MobileMenu closeMenu={() => setIsMobileMenuOpen(false)} />}
 
                         <div className="max-lg:in-data-[state=active]:mt-6 in-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent">
                             <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
                                 <Button
                                     asChild
-                                    variant="outline"
+                                    variant="ghost"
                                     size="sm">
                                     <Link href="#">
-                                        <span>Login</span>
+                                        <span>Sign In</span>
                                     </Link>
                                 </Button>
                                 <Button
                                     asChild
                                     size="sm">
                                     <Link href="#">
-                                        <span>Get Started</span>
+                                        <span>Start for free</span>
                                     </Link>
                                 </Button>
                             </div>
@@ -280,133 +281,76 @@ const MobileMenu = ({ closeMenu }: { closeMenu: () => void }) => {
 }
 
 const NavMenu = () => {
-    const menuRef = React.useRef<React.ElementRef<typeof NavigationMenu>>(null)
-
-    const handleViewportHeight = () => {
-        requestAnimationFrame(() => {
-            const menuNode = menuRef.current
-            if (!menuNode) return
-
-            const openContent = document.querySelector<HTMLElement>('[data-slot="navigation-menu-viewport"][data-state="open"]')
-
-            if (openContent) {
-                const height = openContent.scrollHeight
-                document.documentElement.style.setProperty('--navigation-menu-viewport-height', `${height}px`)
-            } else {
-                document.documentElement.style.removeProperty('--navigation-menu-viewport-height')
-            }
-        })
-    }
-
     return (
-        <NavigationMenu
-            ref={menuRef}
-            onValueChange={handleViewportHeight}
-            className="**:data-[slot=navigation-menu-viewport]:bg-transparent **:data-[slot=navigation-menu-viewport]:rounded-none **:data-[slot=navigation-menu-viewport]:ring-0 **:data-[slot=navigation-menu-viewport]:border-0 **:data-[slot=navigation-menu-viewport]:shadow-none [--color-muted:color-mix(in_oklch,var(--color-foreground)_5%,transparent)] [--viewport-outer-px:2rem] max-lg:hidden">
-            <NavigationMenuList className="gap-3">
-                <NavigationMenuItem value="product">
+        <NavigationMenu className="**:data-[slot=navigation-menu-viewport]:translate-x-(--viewport-translate) **:data-[slot=navigation-menu-viewport]:transition-all **:data-[slot=navigation-menu-viewport]:min-w-lg **:data-[slot=navigation-menu-viewport]:max-w-2xl **:data-[slot=navigation-menu-viewport]:bg-[color-mix(in_oklch,var(--color-muted)_25%,var(--color-background))] max-lg:hidden">
+            <NavigationMenuList className="**:data-[slot=navigation-menu-trigger]:h-7 **:data-[slot=navigation-menu-trigger]:text-foreground/75 **:data-[slot=navigation-menu-trigger]:px-3 **:data-[slot=navigation-menu-trigger]:text-sm gap-0 gap-1">
+                <NavigationMenuItem>
                     <NavigationMenuTrigger>Product</NavigationMenuTrigger>
-                    <NavigationMenuContent className="mt-4.5 origin-top pb-14 pt-5 shadow-none ring-0">
-                        <div className="min-w-6xl pr-22 divide-foreground/10 grid w-full grid-cols-4 gap-4 divide-x">
-                            <div className="row-span-2 -mr-2 grid grid-rows-subgrid gap-1 pr-2">
-                                <span className="text-muted-foreground ml-2 text-xs">Features</span>
-                                <ul className="mt-1 space-y-2">
-                                    {features.map((feature, index) => (
-                                        <ListItem
-                                            key={index}
-                                            href={feature.href}
-                                            title={feature.name}
-                                            description={feature.description}>
-                                            {feature.icon}
-                                        </ListItem>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className="col-span-2 row-span-2 grid grid-rows-subgrid gap-1 border-r-0">
-                                <span className="text-muted-foreground ml-2 text-xs">More Features</span>
-                                <ul className="mt-1 grid grid-cols-2 gap-2">
-                                    {moreFeatures.map((feature, index) => (
-                                        <ListItem
-                                            key={index}
-                                            href={feature.href}
-                                            title={feature.name}
-                                            description={feature.description}>
-                                            {feature.icon}
-                                        </ListItem>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className="row-span-2 grid grid-rows-subgrid gap-1">
-                                <span className="text-muted-foreground ml-2 text-xs">Changelog</span>
-                                <div className="bg-linear-to-br inset-ring-foreground/10 inset-ring-1 relative mt-3 grid overflow-hidden rounded-xl bg-blue-200 from-pink-50 via-white/50 to-emerald-200 p-1 transition-colors duration-200 hover:bg-blue-300">
-                                    <div className="absolute inset-0 aspect-video px-6">
-                                        <div className="mask-b-from-35% before:bg-background before:ring-foreground/10 after:ring-foreground/5 after:bg-background/75 before:z-1 group relative -mx-4 h-4/5 px-4 pt-6 before:absolute before:inset-x-6 before:bottom-0 before:top-4 before:rounded-t-xl before:border before:border-transparent before:ring-1 after:absolute after:inset-x-9 after:bottom-0 after:top-2 after:rounded-t-xl after:border after:border-transparent after:ring-1">
-                                            <div className="bg-card ring-foreground/10 relative z-10 h-full overflow-hidden rounded-t-xl border border-transparent p-8 text-sm shadow-xl shadow-black/25 ring-1"></div>
-                                        </div>
-                                    </div>
-                                    <div className="space-y-0.5 self-end p-3">
-                                        <NavigationMenuLink
-                                            asChild
-                                            className="text-foreground p-0 text-sm font-medium before:absolute before:inset-0 hover:bg-transparent focus:bg-transparent">
-                                            <Link href="#">Multimodal Learning</Link>
-                                        </NavigationMenuLink>
-                                        <p className="text-muted-foreground line-clamp-1 text-xs">Explore how our platform integrates text, image, and audio processing into a unified framework.</p>
-                                    </div>
-                                </div>
-                            </div>
+                    <NavigationMenuContent className="w-full origin-top p-0.5 pb-1">
+                        <div className="bg-card ring-foreground/5 rounded-[calc(var(--radius)-2px)] border border-transparent p-2 shadow ring-1">
+                            <span className="text-muted-foreground ml-2 text-xs">Features</span>
+                            <ul className="mt-1 grid grid-cols-2 gap-2">
+                                {features.map((feature, index) => (
+                                    <ListItem
+                                        key={index}
+                                        href={feature.href}
+                                        title={feature.name}
+                                        description={feature.description}>
+                                        {feature.icon}
+                                    </ListItem>
+                                ))}
+                            </ul>
                         </div>
                     </NavigationMenuContent>
                 </NavigationMenuItem>
-                <NavigationMenuItem value="solutions">
+                <NavigationMenuItem>
                     <NavigationMenuTrigger>Solutions</NavigationMenuTrigger>
-                    <NavigationMenuContent className="mt-4.5 origin-top pb-12 pt-5">
-                        <div className="min-w-6xl pr-22 divide-foreground/10 grid w-full grid-cols-4 gap-4 divide-x">
-                            <div className="col-span-2 row-span-2 -mr-4 grid grid-rows-subgrid gap-1 pr-2">
-                                <span className="text-muted-foreground ml-2 text-xs">Use Cases</span>
-                                <ul className="mt-1 grid grid-cols-2 gap-2">
-                                    {useCases.map((useCase, index) => (
-                                        <ListItem
-                                            key={index}
-                                            href={useCase.href}
-                                            title={useCase.name}
-                                            description={useCase.description}>
-                                            {useCase.icon}
-                                        </ListItem>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className="row-span-2 grid grid-rows-subgrid gap-1 pl-2">
-                                <span className="text-muted-foreground ml-2 text-xs">Content</span>
-                                <ul className="mt-1">
-                                    {contentLinks.map((content, index) => (
-                                        <NavigationMenuLink
-                                            key={index}
-                                            asChild>
-                                            <Link
-                                                href={content.href}
-                                                className="grid grid-cols-[auto_1fr] items-center gap-2.5">
-                                                {content.icon}
-                                                <div className="text-foreground text-sm font-medium">{content.name}</div>
-                                            </Link>
-                                        </NavigationMenuLink>
-                                    ))}
-                                </ul>
-                            </div>
+                    <NavigationMenuContent className="min-w-lg grid w-full origin-top grid-cols-[auto_1fr] gap-2 p-0.5 pb-1">
+                        <div className="bg-card ring-foreground/5 rounded-[calc(var(--radius)-2px)] border border-transparent p-2 shadow ring-1">
+                            <span className="text-muted-foreground ml-2 text-xs">Use Cases</span>
+                            <ul className="mt-1 space-y-2">
+                                {useCases.map((useCase, index) => (
+                                    <ListItem
+                                        key={index}
+                                        href={useCase.href}
+                                        title={useCase.name}
+                                        description={useCase.description}>
+                                        {useCase.icon}
+                                    </ListItem>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className="p-2">
+                            <span className="text-muted-foreground ml-2 text-xs">Content</span>
+                            <ul className="mt-1">
+                                {contentLinks.map((content, index) => (
+                                    <NavigationMenuLink
+                                        key={index}
+                                        asChild>
+                                        <Link
+                                            href={content.href}
+                                            className="grid grid-cols-[auto_1fr] items-center gap-2.5">
+                                            {content.icon}
+                                            <div className="text-foreground text-sm font-medium">{content.name}</div>
+                                        </Link>
+                                    </NavigationMenuLink>
+                                ))}
+                            </ul>
                         </div>
                     </NavigationMenuContent>
                 </NavigationMenuItem>
-                <NavigationMenuItem value="pricing">
+                <NavigationMenuItem>
                     <NavigationMenuLink
                         asChild
-                        className={navigationMenuTriggerStyle()}>
+                        className={navigationMenuTriggerStyle({ className: 'text-foreground/75 h-7 px-3 text-sm' })}>
                         <Link href="#">Pricing</Link>
                     </NavigationMenuLink>
                 </NavigationMenuItem>
-                <NavigationMenuItem value="company">
+                <NavigationMenuItem>
                     <NavigationMenuLink
                         asChild
-                        className={navigationMenuTriggerStyle()}>
-                        <Link href="#">Company</Link>
+                        className={navigationMenuTriggerStyle({ className: 'text-foreground/75 h-7 px-3 text-sm' })}>
+                        <Link href="#">Customers</Link>
                     </NavigationMenuLink>
                 </NavigationMenuItem>
             </NavigationMenuList>
@@ -421,7 +365,7 @@ function ListItem({ title, description, children, href, ...props }: React.Compon
                 <Link
                     href={href}
                     className="grid grid-cols-[auto_1fr] gap-3.5">
-                    <div className="bg-background ring-foreground/10 relative flex size-9 items-center justify-center rounded border border-transparent shadow shadow-sm ring-1">{children}</div>
+                    <div className="bg-background ring-foreground/10 before:mask-y-from-80% after:mask-x-from-80% before:border-foreground/[0.075] after:border-foreground/[0.075] relative flex size-10 items-center justify-center rounded border border-transparent shadow shadow-sm ring-1 before:absolute before:-inset-x-1 before:-inset-y-3 before:border-x before:border-dashed after:absolute after:-inset-x-3 after:-inset-y-1 after:border-y after:border-dashed">{children}</div>
                     <div className="space-y-0.5">
                         <div className="text-foreground text-sm font-medium">{title}</div>
                         <p className="text-muted-foreground line-clamp-1 text-xs">{description}</p>

@@ -15,6 +15,7 @@ import { TextOnlySlide } from "@/components/slides/text-only-slide"
 import { GridSlide, twoTallTwoSmall } from "@/components/slides/grid-slide"
 import { SlideFrame } from "@/components/slides/slide-frame"
 import { BranchingIllustration } from "@/components/branching-illustration"
+import LimsAiChatDemo from "@/components/ui/lims-ai-chat-demo"
 
 // --- Text-first Slide Components (smaller typography, black/stone palette) ---
 
@@ -72,17 +73,38 @@ function NewParadigmSlide() {
 
 function PillarAiNativeSlide() {
   return (
-    <TextOnlySlide
+    <GridSlide
       className="bg-zinc-50"
-      eyebrow="Pillar 1 — Intelligence Layer"
-      title={<span>AI as a Core Team Member, Not a Gadget.</span>}
-    >
-      <ul className="space-y-3">
-        <li>LLMs are woven into the fabric of the OS—never an afterthought.</li>
-        <li>Agents read, write, and reason about your data to enforce structure and automate tasks.</li>
-        <li>The AI Cursor becomes your command line to query, analyze, and visualize in natural language.</li>
-      </ul>
-    </TextOnlySlide>
+      gridClassName="grid-cols-2 auto-rows-fr"
+      gridInnerClassName="divide-foreground/10"
+      items={[
+        {
+          id: 'left-content',
+          padded: true,
+          content: (
+            <div className="space-y-3">
+              <div className="text-xs font-medium uppercase tracking-wide text-stone-500">Pillar 1 — Intelligence Layer</div>
+              <h3 className="text-xl font-semibold text-zinc-900">AI as a Core Team Member, Not a Gadget.</h3>
+              <ul className="space-y-3 text-stone-700">
+                <li>LLMs are woven into the fabric of the OS—never an afterthought.</li>
+                <li>Agents read, write, and reason about your data to enforce structure and automate tasks.</li>
+                <li>The AI Cursor becomes your command line to query, analyze, and visualize in natural language.</li>
+              </ul>
+              <p className="text-[12px] text-stone-600">Demo: High‑value LIMS workflow — ask for IC50s, QC, and prepare a merge.</p>
+            </div>
+          ),
+        },
+        {
+          id: 'right-chat',
+          padded: true,
+          content: (
+            <div className="flex h-full items-center justify-center">
+              <LimsAiChatDemo className="w-full max-w-[420px]" />
+            </div>
+          ),
+        },
+      ]}
+    />
   )
 }
 
