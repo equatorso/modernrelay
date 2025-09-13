@@ -6,6 +6,10 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { motion } from "motion/react"
 import { Logo } from "@/components/logo"
+import OpenAI from "@/components/logos/open-ai"
+import ClaudeAI from "@/components/logos/claude"
+import { Vercel } from "@/components/logos/vercel"
+import VisualStudioCode from "@/components/logos/vs-code"
 
 interface SlideProps {
   children: React.ReactNode
@@ -116,19 +120,84 @@ function PillarBranchingSlide() {
   )
 }
 
+// Compact integrations mosaic inspired by `components/integrations-9.tsx`
+const MiniIntegrationCard = ({ children, className }: { children?: React.ReactNode; className?: string }) => {
+  return (
+    <div className={cn('bg-background ring-foreground/10 flex aspect-square size-full rounded-md border border-transparent shadow-sm ring-1 *:m-auto', className)}>
+      {children}
+    </div>
+  )
+}
+
+const MiniIntegrationsGroup = ({ children, label, className }: { children?: React.ReactNode; label?: string; className?: string }) => {
+  return (
+    <div className={cn('ring-foreground/5 relative z-10 grid grid-rows-[auto_1fr] gap-1 rounded-xl border border-transparent bg-white/70 p-1.5 shadow ring-1', className)}>
+      <span className="text-stone-600 text-center text-[10px] leading-none">{label}</span>
+      {children}
+    </div>
+  )
+}
+
+const MiniIntegrationsMosaic = () => {
+  return (
+    <div className="relative rounded-2xl border bg-white/60 p-3">
+      <div
+        aria-hidden
+        className="mask-radial-to-85% absolute inset-0 m-auto bg-[radial-gradient(var(--color-foreground)_1px,transparent_1px)] opacity-5 [background-size:12px_12px]"
+      />
+      <div className="relative space-y-2">
+        <div className="text-center">
+          <span className="font-mono text-[11px] text-stone-700 tracking-tight">modular platform</span>
+        </div>
+
+        <div className="grid grid-cols-3 gap-2">
+          <MiniIntegrationsGroup label="Data Models">
+            <div className="grid grid-cols-2 gap-1">
+              <MiniIntegrationCard><span className="font-mono text-[10px] text-stone-700">Sequences</span></MiniIntegrationCard>
+              <MiniIntegrationCard><span className="font-mono text-[10px] text-stone-700">Assays</span></MiniIntegrationCard>
+              <MiniIntegrationCard><span className="font-mono text-[10px] text-stone-700">Images</span></MiniIntegrationCard>
+              <MiniIntegrationCard><span className="font-mono text-[10px] text-stone-700">Compounds</span></MiniIntegrationCard>
+            </div>
+          </MiniIntegrationsGroup>
+          <MiniIntegrationsGroup label="Workflows">
+            <div className="grid grid-cols-2 gap-1">
+              <MiniIntegrationCard><span className="font-mono text-[10px] text-stone-700">Events</span></MiniIntegrationCard>
+              <MiniIntegrationCard><span className="font-mono text-[10px] text-stone-700">LLM</span></MiniIntegrationCard>
+              <MiniIntegrationCard><span className="font-mono text-[10px] text-stone-700">QC</span></MiniIntegrationCard>
+              <MiniIntegrationCard><span className="font-mono text-[10px] text-stone-700">Audit</span></MiniIntegrationCard>
+            </div>
+          </MiniIntegrationsGroup>
+          <MiniIntegrationsGroup label="External Systems">
+            <div className="grid grid-cols-2 gap-1">
+              <MiniIntegrationCard><OpenAI className="text-stone-600" /></MiniIntegrationCard>
+              <MiniIntegrationCard><ClaudeAI className="text-stone-600" /></MiniIntegrationCard>
+              <MiniIntegrationCard><Vercel className="text-stone-600" /></MiniIntegrationCard>
+              <MiniIntegrationCard><VisualStudioCode className="text-stone-600" /></MiniIntegrationCard>
+            </div>
+          </MiniIntegrationsGroup>
+        </div>
+        <p className="text-center text-[10px] text-stone-600">Unified OS layer for models, workflows, and integrations.</p>
+      </div>
+    </div>
+  )
+}
+
 function PillarModularSlide() {
   return (
     <Slide className="bg-zinc-50">
       <div className="grid md:grid-cols-2 gap-8 items-start">
-        <div className="space-y-2">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-stone-500">Pillar 3 — Extensible Foundation</h2>
-          <h3 className="text-2xl font-semibold text-zinc-900">An OS That Conforms to Your Science.</h3>
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <h2 className="text-sm font-medium uppercase tracking-wide text-stone-500">Pillar 3 — Extensible Foundation</h2>
+            <h3 className="text-2xl font-semibold text-zinc-900">An OS That Conforms to Your Science.</h3>
+          </div>
+          <ul className="space-y-3 text-base text-stone-700">
+            <li>Define custom data models and ontologies that match your unique biology.</li>
+            <li>Create new modules or integrate instruments and databases via a unified data layer.</li>
+            <li>Adapt the platform as your assays and modalities evolve—future-proof by design.</li>
+          </ul>
         </div>
-        <ul className="space-y-3 text-base text-stone-700">
-          <li>Define custom data models and ontologies that match your unique biology.</li>
-          <li>Create new modules or integrate instruments and databases via a unified data layer.</li>
-          <li>Adapt the platform as your assays and modalities evolve—future-proof by design.</li>
-        </ul>
+        <MiniIntegrationsMosaic />
       </div>
     </Slide>
   )
