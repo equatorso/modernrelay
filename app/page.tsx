@@ -1,7 +1,7 @@
-import Image from "next/image";
-import FeaturesSection from "@/components/features-1";
+import SlideDeck from "@/components/slide-deck";
+
 export default function Home() {
   return (
-    <FeaturesSection />
+    <SlideDeck />
   );
 }
