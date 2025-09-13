@@ -13,6 +13,9 @@ import { ChartIllustration } from "@/components/chart-illustration"
 import { InvoiceIllustration } from "@/components/invoice-illustration"
 import { MessageIllustration } from "@/components/message-illustration"
 import LogoCloud from "@/components/logo-cloud"
+import { IntegrationsIllustration } from "./integrations-illustration"
+import { Card } from "./ui/card"
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 
 interface SlideProps {
   children: React.ReactNode
@@ -27,265 +30,310 @@ function Slide({ children, className }: SlideProps) {
   )
 }
 
+// Slide 1: Hero/Title
+function HeroSlide() {
+  return (
+    <Slide className="bg-background text-center">
+      <div className="max-w-4xl mx-auto space-y-8">
+        <div className="flex justify-center mb-12">
+          <Logo className="h-12 w-auto" />
+        </div>
+        <h1 className="text-6xl font-bold tracking-tight">
+          Transform Your
+          <span className="bg-gradient-to-r from-purple-600 to-teal-600 bg-clip-text text-transparent"> Business</span>
+        </h1>
+        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          Powerful analytics, streamlined workflows, and intelligent automation
+          to accelerate your team's productivity.
+        </p>
+        <Button size="lg" className="mt-8">
+          Get Started Today
+        </Button>
+      </div>
+    </Slide>
+  )
+}
+
+// Slide 2: Problem Statement
+function ProblemStatementSlide() {
+  return (
+    <Slide className="bg-muted/30">
+      <div className="max-w-5xl mx-auto text-center space-y-12">
+        <h2 className="text-3xl font-bold">The Challenge</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+          <div className="space-y-4 flex flex-col items-center">
+            <div className="w-full max-w-xs h-48 flex items-center justify-center">
+              <ChartIllustration />
+            </div>
+            <h3 className="text-xl font-semibold">Scattered Data</h3>
+            <p className="text-muted-foreground">Analytics spread across multiple tools making insights hard to find</p>
+          </div>
+          <div className="space-y-4 flex flex-col items-center">
+            <div className="w-full max-w-xs h-48 flex items-center justify-center">
+              <InvoiceIllustration />
+            </div>
+            <h3 className="text-xl font-semibold">Manual Processes</h3>
+            <p className="text-muted-foreground">Time-consuming workflows that slow down your team</p>
+          </div>
+          <div className="space-y-4 flex flex-col items-center">
+            <div className="w-full max-w-xs h-48 flex items-center justify-center">
+              <IntegrationsIllustration />
+            </div>
+            <h3 className="text-xl font-semibold">Poor Integration</h3>
+            <p className="text-muted-foreground">Tools that don't work together, creating silos</p>
+          </div>
+        </div>
+      </div>
+    </Slide>
+  )
+}
+
+// Slide 3: Solution Overview
+function SolutionOverviewSlide() {
+  return (
+    <Slide className="bg-background">
+      <div className="max-w-6xl mx-auto w-full">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold mb-4">Our Solution</h2>
+          <p className="text-xl text-muted-foreground">Everything you need in one powerful platform</p>
+        </div>
+        <FeaturesSection />
+      </div>
+    </Slide>
+  )
+}
+
+// Slide 4: Key Features
+function KeyFeaturesSlide() {
+  return (
+    <Slide className="bg-muted/20">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-16">Key Features</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <h3 className="text-2xl font-semibold">Real-time Analytics</h3>
+              <p className="text-muted-foreground text-lg">
+                Track performance metrics with live data visualization and customizable dashboards
+                that help you make informed decisions faster.
+              </p>
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-2xl font-semibold">Automated Workflows</h3>
+              <p className="text-muted-foreground text-lg">
+                Streamline repetitive tasks and reduce manual work with intelligent automation
+                that scales with your business needs.
+              </p>
+            </div>
+          </div>
+          <div className="flex justify-center">
+            <ChartIllustration />
+          </div>
+        </div>
+      </div>
+    </Slide>
+  )
+}
+
+// Slide 5: Benefits
+function BenefitsSlide() {
+  return (
+    <Slide className="bg-background">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="flex justify-center">
+            <InvoiceIllustration />
+          </div>
+          <div className="space-y-8">
+            <h2 className="text-3xl font-bold">Transform Results</h2>
+            <div className="space-y-6">
+              <div className="flex items-start space-x-4">
+                <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-1">
+                  <span className="text-green-600 font-bold">✓</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold">75% Time Savings</h3>
+                  <p className="text-muted-foreground">Automate manual processes and focus on what matters</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-1">
+                  <span className="text-green-600 font-bold">✓</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold">3x Faster Insights</h3>
+                  <p className="text-muted-foreground">Get actionable data when you need it most</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-1">
+                  <span className="text-green-600 font-bold">✓</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold">99.9% Uptime</h3>
+                  <p className="text-muted-foreground">Reliable platform you can depend on</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Slide>
+  )
+}
+
+// Slide 6: Social Proof
+function SocialProofSlide() {
+  return (
+    <Slide className="bg-muted/20">
+      <div className="max-w-6xl mx-auto text-center space-y-12">
+        <h2 className="text-3xl font-bold">Trusted by Industry Leaders</h2>
+        <LogoCloud />
+        <div className="max-w-3xl mx-auto">
+          <blockquote className="before:bg-primary relative max-w-xl mx-auto pl-6 text-left before:absolute before:inset-y-0 before:left-0 before:w-1 before:rounded-full">
+            <p className="text-xl">
+              "This platform transformed how we handle our data analytics. We've seen a 300%
+              improvement in our decision-making speed."
+            </p>
+            <footer className="mt-6 flex items-center gap-3">
+              <Avatar className="ring-foreground/10 size-10 border border-transparent shadow ring-1">
+                <AvatarImage src="/avatars/shadcn.jpg" alt="Sarah Chen" />
+                <AvatarFallback>SC</AvatarFallback>
+              </Avatar>
+              <div className="text-left">
+                <cite className="font-semibold not-italic">Sarah Chen</cite>
+                <p className="text-sm text-muted-foreground">CTO, TechCorp</p>
+              </div>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </Slide>
+  )
+}
+
+// Slide 7: Pricing
+function PricingSlide() {
+  return (
+    <Slide className="bg-background">
+      <div className="max-w-5xl mx-auto text-center space-y-12">
+        <h2 className="text-3xl font-bold">Simple, Transparent Pricing</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <Card className="p-8 space-y-4 text-left">
+            <h3 className="text-xl font-semibold">Starter</h3>
+            <div className="text-3xl font-bold">$29<span className="text-sm font-normal text-muted-foreground">/mo</span></div>
+            <ul className="space-y-2 text-sm text-muted-foreground pt-4">
+              <li>✓ Basic analytics</li>
+              <li>✓ 5 team members</li>
+              <li>✓ Email support</li>
+            </ul>
+            <Button variant="outline" className="w-full !mt-8">Get Started</Button>
+          </Card>
+          <Card className="p-8 space-y-4 text-left border-primary relative">
+            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+              <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-medium">Most Popular</span>
+            </div>
+            <h3 className="text-xl font-semibold">Professional</h3>
+            <div className="text-3xl font-bold">$99<span className="text-sm font-normal text-muted-foreground">/mo</span></div>
+            <ul className="space-y-2 text-sm text-muted-foreground pt-4">
+              <li>✓ Advanced analytics</li>
+              <li>✓ 20 team members</li>
+              <li>✓ Priority support</li>
+              <li>✓ Custom integrations</li>
+            </ul>
+            <Button className="w-full !mt-8">Start Free Trial</Button>
+          </Card>
+          <Card className="p-8 space-y-4 text-left">
+            <h3 className="text-xl font-semibold">Enterprise</h3>
+            <div className="text-3xl font-bold">Custom</div>
+            <ul className="space-y-2 text-sm text-muted-foreground pt-4">
+              <li>✓ Everything in Pro</li>
+              <li>✓ Unlimited users</li>
+              <li>✓ 24/7 phone support</li>
+              <li>✓ On-premise deployment</li>
+            </ul>
+            <Button variant="outline" className="w-full !mt-8">Contact Sales</Button>
+          </Card>
+        </div>
+      </div>
+    </Slide>
+  )
+}
+
+// Slide 8: Call to Action
+function CtaSlide() {
+  return (
+    <Slide className="bg-gradient-to-br from-purple-600 to-teal-600 text-white">
+      <div className="max-w-4xl mx-auto text-center space-y-8">
+        <h2 className="text-5xl font-bold">Ready to Transform Your Business?</h2>
+        <p className="text-xl opacity-90 max-w-2xl mx-auto">
+          Join thousands of companies already using our platform to drive growth and efficiency.
+        </p>
+        <div className="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
+          <Button size="lg" variant="secondary" className="bg-white text-gray-900 hover:bg-gray-100">
+            Start Free Trial
+          </Button>
+          <Button size="lg" variant="ghost" className="text-white border-white hover:bg-white/10">
+            Schedule Demo
+          </Button>
+        </div>
+        <div className="flex justify-center items-center space-x-8 text-sm opacity-75 mt-12">
+          <span>✓ No credit card required</span>
+          <span>✓ 14-day free trial</span>
+          <span>✓ Cancel anytime</span>
+        </div>
+      </div>
+    </Slide>
+  )
+}
+
 const slides = [
   // Slide 1: Hero/Title
   {
     id: 1,
-    content: (
-      <Slide className="bg-background text-center">
-        <div className="max-w-4xl mx-auto space-y-8">
-          <div className="flex justify-center mb-12">
-            <Logo className="h-12 w-auto" />
-          </div>
-          <h1 className="text-6xl font-bold tracking-tight">
-            Transform Your
-            <span className="bg-gradient-to-r from-purple-600 to-teal-600 bg-clip-text text-transparent"> Business</span>
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Powerful analytics, streamlined workflows, and intelligent automation
-            to accelerate your team's productivity.
-          </p>
-          <Button size="lg" className="mt-8">
-            Get Started Today
-          </Button>
-        </div>
-      </Slide>
-    )
+    content: <HeroSlide />
   },
 
   // Slide 2: Problem Statement
   {
     id: 2,
-    content: (
-      <Slide className="bg-muted/30">
-        <div className="max-w-4xl mx-auto text-center space-y-12">
-          <h2 className="text-4xl font-bold">The Challenge</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            <div className="space-y-4">
-              <div className="w-16 h-16 mx-auto rounded-full bg-red-100 flex items-center justify-center">
-                <span className="text-2xl">📊</span>
-              </div>
-              <h3 className="text-xl font-semibold">Scattered Data</h3>
-              <p className="text-muted-foreground">Analytics spread across multiple tools making insights hard to find</p>
-            </div>
-            <div className="space-y-4">
-              <div className="w-16 h-16 mx-auto rounded-full bg-yellow-100 flex items-center justify-center">
-                <span className="text-2xl">⏱️</span>
-              </div>
-              <h3 className="text-xl font-semibold">Manual Processes</h3>
-              <p className="text-muted-foreground">Time-consuming workflows that slow down your team</p>
-            </div>
-            <div className="space-y-4">
-              <div className="w-16 h-16 mx-auto rounded-full bg-blue-100 flex items-center justify-center">
-                <span className="text-2xl">🔗</span>
-              </div>
-              <h3 className="text-xl font-semibold">Poor Integration</h3>
-              <p className="text-muted-foreground">Tools that don't work together, creating silos</p>
-            </div>
-          </div>
-        </div>
-      </Slide>
-    )
+    content: <ProblemStatementSlide />
   },
 
   // Slide 3: Solution Overview
   {
     id: 3,
-    content: (
-      <Slide className="bg-background">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Our Solution</h2>
-            <p className="text-xl text-muted-foreground">Everything you need in one powerful platform</p>
-          </div>
-          <FeaturesSection />
-        </div>
-      </Slide>
-    )
+    content: <SolutionOverviewSlide />
   },
 
   // Slide 4: Key Features
   {
     id: 4,
-    content: (
-      <Slide className="bg-muted/20">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16">Key Features</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <h3 className="text-2xl font-semibold">Real-time Analytics</h3>
-                <p className="text-muted-foreground text-lg">
-                  Track performance metrics with live data visualization and customizable dashboards
-                  that help you make informed decisions faster.
-                </p>
-              </div>
-              <div className="space-y-4">
-                <h3 className="text-2xl font-semibold">Automated Workflows</h3>
-                <p className="text-muted-foreground text-lg">
-                  Streamline repetitive tasks and reduce manual work with intelligent automation
-                  that scales with your business needs.
-                </p>
-              </div>
-            </div>
-            <div className="flex justify-center">
-              <ChartIllustration />
-            </div>
-          </div>
-        </div>
-      </Slide>
-    )
+    content: <KeyFeaturesSlide />
   },
 
   // Slide 5: Benefits
   {
     id: 5,
-    content: (
-      <Slide className="bg-background">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="flex justify-center">
-              <InvoiceIllustration />
-            </div>
-            <div className="space-y-8">
-              <h2 className="text-4xl font-bold">Transform Results</h2>
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-green-600 font-bold">✓</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold">75% Time Savings</h3>
-                    <p className="text-muted-foreground">Automate manual processes and focus on what matters</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-green-600 font-bold">✓</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold">3x Faster Insights</h3>
-                    <p className="text-muted-foreground">Get actionable data when you need it most</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-green-600 font-bold">✓</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold">99.9% Uptime</h3>
-                    <p className="text-muted-foreground">Reliable platform you can depend on</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Slide>
-    )
+    content: <BenefitsSlide />
   },
 
   // Slide 6: Social Proof
   {
     id: 6,
-    content: (
-      <Slide className="bg-muted/20">
-        <div className="max-w-6xl mx-auto text-center space-y-12">
-          <h2 className="text-4xl font-bold">Trusted by Industry Leaders</h2>
-          <LogoCloud />
-          <div className="max-w-3xl mx-auto">
-            <blockquote className="text-2xl italic text-muted-foreground mb-6">
-              "This platform transformed how we handle our data analytics. We've seen a 300%
-              improvement in our decision-making speed."
-            </blockquote>
-            <div className="flex items-center justify-center space-x-3">
-              <MessageIllustration />
-              <div className="text-left">
-                <p className="font-semibold">Sarah Chen</p>
-                <p className="text-sm text-muted-foreground">CTO, TechCorp</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Slide>
-    )
+    content: <SocialProofSlide />
   },
 
   // Slide 7: Pricing
   {
     id: 7,
-    content: (
-      <Slide className="bg-background">
-        <div className="max-w-4xl mx-auto text-center space-y-12">
-          <h2 className="text-4xl font-bold">Simple, Transparent Pricing</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="border rounded-lg p-8 space-y-4">
-              <h3 className="text-xl font-semibold">Starter</h3>
-              <div className="text-3xl font-bold">$29<span className="text-sm font-normal text-muted-foreground">/mo</span></div>
-              <ul className="space-y-2 text-left text-sm text-muted-foreground">
-                <li>✓ Basic analytics</li>
-                <li>✓ 5 team members</li>
-                <li>✓ Email support</li>
-              </ul>
-              <Button variant="outline" className="w-full">Get Started</Button>
-            </div>
-            <div className="border-2 border-primary rounded-lg p-8 space-y-4 relative">
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-medium">Most Popular</span>
-              </div>
-              <h3 className="text-xl font-semibold">Professional</h3>
-              <div className="text-3xl font-bold">$99<span className="text-sm font-normal text-muted-foreground">/mo</span></div>
-              <ul className="space-y-2 text-left text-sm text-muted-foreground">
-                <li>✓ Advanced analytics</li>
-                <li>✓ 20 team members</li>
-                <li>✓ Priority support</li>
-                <li>✓ Custom integrations</li>
-              </ul>
-              <Button className="w-full">Start Free Trial</Button>
-            </div>
-            <div className="border rounded-lg p-8 space-y-4">
-              <h3 className="text-xl font-semibold">Enterprise</h3>
-              <div className="text-3xl font-bold">Custom</div>
-              <ul className="space-y-2 text-left text-sm text-muted-foreground">
-                <li>✓ Everything in Pro</li>
-                <li>✓ Unlimited users</li>
-                <li>✓ 24/7 phone support</li>
-                <li>✓ On-premise deployment</li>
-              </ul>
-              <Button variant="outline" className="w-full">Contact Sales</Button>
-            </div>
-          </div>
-        </div>
-      </Slide>
-    )
+    content: <PricingSlide />
   },
 
   // Slide 8: Call to Action
   {
     id: 8,
-    content: (
-      <Slide className="bg-gradient-to-br from-purple-600 to-teal-600 text-white">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          <h2 className="text-5xl font-bold">Ready to Transform Your Business?</h2>
-          <p className="text-xl opacity-90 max-w-2xl mx-auto">
-            Join thousands of companies already using our platform to drive growth and efficiency.
-          </p>
-          <div className="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
-            <Button size="lg" variant="secondary" className="bg-white text-gray-900 hover:bg-gray-100">
-              Start Free Trial
-            </Button>
-            <Button size="lg" variant="ghost" className="text-white border-white hover:bg-white/10">
-              Schedule Demo
-            </Button>
-          </div>
-          <div className="flex justify-center items-center space-x-8 text-sm opacity-75 mt-12">
-            <span>✓ No credit card required</span>
-            <span>✓ 14-day free trial</span>
-            <span>✓ Cancel anytime</span>
-          </div>
-        </div>
-      </Slide>
-    )
+    content: <CtaSlide />
   }
 ]
 
