@@ -5,7 +5,7 @@ import { ArrowUp, Globe, Plus, Sparkle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { TextShimmer } from '@/components/ui/text-shimmer'
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart'
+import { ChartContainer, ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart'
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, BarChart, Bar } from 'recharts'
 
 type LimsAiChatDemoProps = {
@@ -30,18 +30,18 @@ export default function LimsAiChatDemo({ className, bare = false, showUserMessag
     'Running QC checks…',
   ], [])
 
-  const bindingCurveData = useMemo(
-    () => [
-      { x: -9, response: 98 },
-      { x: -8.5, response: 92 },
-      { x: -8, response: 81 },
-      { x: -7.5, response: 62 },
-      { x: -7, response: 41 },
-      { x: -6.5, response: 24 },
-      { x: -6, response: 12 },
-    ],
-    []
-  )
+  const bindingCurveData = useMemo(() => {
+    // Two realistic saturating curves across log-spaced [D] 1..1000 nM
+    const rows: { d: number; kdLow: number; kdHigh: number }[] = []
+    const occupancy = (d: number, kd: number) => Number(((d / (d + kd)) * 100).toFixed(1))
+    const steps = 36
+    for (let i = 0; i <= steps; i += 1) {
+      const exponent = (3 * i) / steps // 10^0 .. 10^3
+      const d = Number(Math.pow(10, exponent).toFixed(3))
+      rows.push({ d, kdLow: occupancy(d, 30), kdHigh: occupancy(d, 200) })
+    }
+    return rows
+  }, [])
 
   const residualsData = useMemo(
     () => [
@@ -252,18 +252,23 @@ export default function LimsAiChatDemo({ className, bare = false, showUserMessag
                 </div>
               </div>
               <div className="mt-3 rounded-md bg-white/60 p-2 ring-1 ring-foreground/10">
-                <div className="text-[11px] font-mono text-foreground/70">Binding curve · Compound AF45</div>
-                <div className="mt-1" style={{ height: 100 }}>
+                <div className="text-[11px] font-mono text-foreground/70">Binding curves · Occupancy vs [D] (nM)</div>
+                <div className="mt-1" style={{ height: 180 }}>
                   <ChartContainer
-                    className="h-full"
-                    config={{ response: { label: 'Response', color: 'hsl(var(--color-foreground))' } }}
+                    className="h-full w-full"
+                    config={{
+                      kdLow: { label: 'Kᴅ 30 nM', color: 'var(--color-emerald-500)' },
+                      kdHigh: { label: 'Kᴅ 200 nM', color: 'var(--color-indigo-400)' },
+                    }}
                   >
-                    <LineChart data={bindingCurveData} margin={{ left: 8, right: 8, top: 4, bottom: 4 }}>
+                    <LineChart data={bindingCurveData} margin={{ left: 12, right: 12, top: 12, bottom: 8 }}>
                       <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="x" tick={{ fontSize: 10 }} stroke="currentColor" />
-                      <YAxis tick={{ fontSize: 10 }} stroke="currentColor" />
+                      <XAxis dataKey="d" tick={{ fontSize: 10 }} stroke="currentColor" type="number" domain={[1, 1000]} scale="log" allowDataOverflow ticks={[1, 3, 10, 30, 100, 300, 1000]} />
+                      <YAxis tick={{ fontSize: 10 }} stroke="currentColor" domain={[0, 100]} />
                       <ChartTooltip content={<ChartTooltipContent hideIndicator />} />
-                      <Line type="monotone" dataKey="response" stroke="var(--color-response)" strokeWidth={2} dot={false} />
+                      <ChartLegend verticalAlign="top" content={<ChartLegendContent />} />
+                      <Line type="monotone" dataKey="kdLow" stroke="var(--color-kdLow)" strokeWidth={2} dot={false} />
+                      <Line type="monotone" dataKey="kdHigh" stroke="var(--color-kdHigh)" strokeWidth={2} dot={false} />
                     </LineChart>
                   </ChartContainer>
                 </div>
