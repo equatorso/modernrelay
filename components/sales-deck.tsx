@@ -75,7 +75,7 @@ function PillarAiNativeSlide() {
   return (
     <GridSlide
       className="bg-zinc-50"
-      gridClassName="grid-cols-2 auto-rows-fr"
+      gridClassName="grid-cols-2 auto-rows-fr h-[72vh]"
       gridInnerClassName="divide-foreground/10"
       items={[
         {
@@ -85,7 +85,7 @@ function PillarAiNativeSlide() {
             <div className="space-y-3">
               <div className="text-xs font-medium uppercase tracking-wide text-stone-500">Pillar 1 — Intelligence Layer</div>
               <h3 className="text-xl font-semibold text-zinc-900">AI as a Core Team Member, Not a Gadget.</h3>
-              <ul className="space-y-3 text-stone-700">
+              <ul className="space-y-3 text-stone-700 pt-10">
                 <li>LLMs are woven into the fabric of the OS—never an afterthought.</li>
                 <li>Agents read, write, and reason about your data to enforce structure and automate tasks.</li>
                 <li>The AI Cursor becomes your command line to query, analyze, and visualize in natural language.</li>
@@ -96,10 +96,10 @@ function PillarAiNativeSlide() {
         },
         {
           id: 'right-chat',
-          padded: true,
+          padded: false,
           content: (
-            <div className="flex h-full items-center justify-center">
-              <LimsAiChatDemo className="w-full max-w-[420px]" />
+            <div className="h-full">
+              <LimsAiChatDemo bare showUserMessage showPrompt scroll repeat={false} className="w-full h-full rounded-none" />
             </div>
           ),
         },
@@ -122,7 +122,7 @@ function PillarBranchingSlide() {
             <div className="space-y-3">
               <div className="text-xs font-medium uppercase tracking-wide text-stone-500">Pillar 2 — Collaboration Layer</div>
               <h3 className="text-xl font-semibold text-zinc-900">Git-Style Branching for Science.</h3>
-              <ul className="space-y-3 text-stone-700">
+              <ul className="space-y-3 text-stone-700 pt-10">
                 <li>Explore hypotheses in isolated branches without corrupting validated data.</li>
                 <li>Enable true parallel work across humans and AI agents.</li>
                 <li>Transparent approval and merge with an audit trail ensures 21 CFR Part 11 compliance.</li>
@@ -172,14 +172,14 @@ const MiniIntegrationsGroup = ({ children, label, className }: { children?: Reac
 
 const MiniIntegrationsMosaic = () => {
   return (
-    <div className="relative rounded-2xl border bg-white/60 p-3">
+    <div className="relative p-3">
       <div
         aria-hidden
         className="mask-radial-to-85% absolute inset-0 m-auto bg-[radial-gradient(var(--color-foreground)_1px,transparent_1px)] opacity-5 [background-size:12px_12px]"
       />
-      <div className="relative space-y-2">
+      <div className="relative space-y-4">
         <div className="text-center">
-          <span className="font-mono text-[11px] text-stone-700 tracking-tight">modular platform</span>
+          <span className="font-mono text-[11px] text-stone-700 tracking-tight">MODULES</span>
         </div>
 
         <div className="grid grid-cols-3 gap-2">
@@ -227,7 +227,7 @@ function PillarModularSlide() {
             <div className="space-y-3">
               <div className="text-xs font-medium uppercase tracking-wide text-stone-500">Pillar 3 — Extensible Foundation</div>
               <h3 className="text-xl font-semibold text-zinc-900">An OS That Conforms to Your Science.</h3>
-              <ul className="space-y-3 text-stone-700">
+              <ul className="space-y-3 text-stone-700 pt-10">
                 <li>Define custom data models and ontologies that match your unique biology.</li>
                 <li>Create new modules or integrate instruments and databases via a unified data layer.</li>
                 <li>Adapt the platform as your assays and modalities evolve—future-proof by design.</li>

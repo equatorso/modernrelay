@@ -5,12 +5,19 @@ import { ArrowUp, Globe, Plus, Sparkle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { TextShimmer } from '@/components/ui/text-shimmer'
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart'
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, BarChart, Bar } from 'recharts'
 
 type LimsAiChatDemoProps = {
   className?: string
+  bare?: boolean
+  showUserMessage?: boolean
+  showPrompt?: boolean
+  scroll?: boolean
+  repeat?: boolean
 }
 
-export default function LimsAiChatDemo({ className }: LimsAiChatDemoProps) {
+export default function LimsAiChatDemo({ className, bare = false, showUserMessage = true, showPrompt = true, scroll = true, repeat = false }: LimsAiChatDemoProps) {
   const [visibleSteps, setVisibleSteps] = useState(0)
   const timeouts = useRef<number[]>([])
   const messagesRef = useRef<HTMLDivElement | null>(null)
@@ -22,6 +29,32 @@ export default function LimsAiChatDemo({ className }: LimsAiChatDemoProps) {
     'Computing IC50…',
     'Running QC checks…',
   ], [])
+
+  const bindingCurveData = useMemo(
+    () => [
+      { x: -9, response: 98 },
+      { x: -8.5, response: 92 },
+      { x: -8, response: 81 },
+      { x: -7.5, response: 62 },
+      { x: -7, response: 41 },
+      { x: -6.5, response: 24 },
+      { x: -6, response: 12 },
+    ],
+    []
+  )
+
+  const residualsData = useMemo(
+    () => [
+      { i: 1, r: -1.2 },
+      { i: 2, r: 0.5 },
+      { i: 3, r: 0.9 },
+      { i: 4, r: -0.3 },
+      { i: 5, r: -2.4 },
+      { i: 6, r: 1.1 },
+      { i: 7, r: 0.2 },
+    ],
+    []
+  )
 
   useEffect(() => {
     const schedule = (fn: () => void, delay: number) => {
@@ -40,8 +73,10 @@ export default function LimsAiChatDemo({ className }: LimsAiChatDemoProps) {
       schedule(() => setVisibleSteps(3), 6200)
       // 4) AI follow-up (QC + merge prepared)
       schedule(() => setVisibleSteps(4), 9000)
-      // 5) Replay
-      schedule(() => play(), 22000)
+      // 5) Replay (if enabled)
+      if (repeat) {
+        schedule(() => play(), 22000)
+      }
     }
 
     play()
@@ -49,7 +84,7 @@ export default function LimsAiChatDemo({ className }: LimsAiChatDemoProps) {
       timeouts.current.forEach((id) => window.clearTimeout(id))
       timeouts.current = []
     }
-  }, [])
+  }, [repeat])
 
   // Auto-scroll to bottom when new steps appear
   useEffect(() => {
@@ -116,25 +151,38 @@ export default function LimsAiChatDemo({ className }: LimsAiChatDemoProps) {
   }, [actionIndex, visibleSteps])
 
   return (
-    <div className={cn('relative rounded-2xl border bg-white/70 p-4 shadow-sm ring-1 ring-foreground/10', className)}>
-      <div className="pointer-events-none absolute inset-0 -z-10 rounded-2xl bg-[radial-gradient(var(--color-foreground)_1px,transparent_1px)] opacity-5 [background-size:12px_12px]" />
-
-      <div className="text-center">
-        <div className="mx-auto inline-flex items-center gap-2">
-          <div className="border-background dark:inset-ring dark:inset-ring-white/25 bg-linear-to-b dark:inset-shadow-2xs dark:inset-shadow-white/25 relative flex size-5 items-center justify-center rounded-full border from-purple-300 to-indigo-600 shadow-md shadow-black/20 ring-1 ring-black/10 dark:border-0 dark:shadow-white/10 dark:ring-black/50">
-            <div className="absolute inset-1 aspect-square rounded-full border border-white/35 bg-black/15"></div>
-            <div className="absolute inset-px aspect-square rounded-full border border-dashed border-white/25"></div>
-            <Sparkle className="size-3 fill-white stroke-white drop-shadow-sm" />
+    <div className={cn(
+      bare ? 'relative h-full flex flex-col px-4 py-2' : 'relative rounded-2xl border bg-white/70 p-4 shadow-sm ring-1 ring-foreground/10 h-full flex flex-col',
+      className
+    )}>
+      {!bare && (
+        <>
+          <div className="pointer-events-none absolute inset-0 -z-10 rounded-2xl bg-[radial-gradient(var(--color-foreground)_1px,transparent_1px)] opacity-5 [background-size:12px_12px]" />
+          <div className="text-center">
+            <div className="mx-auto inline-flex items-center gap-2">
+              <div className="border-background dark:inset-ring dark:inset-ring-white/25 bg-linear-to-b dark:inset-shadow-2xs dark:inset-shadow-white/25 relative flex size-5 items-center justify-center rounded-full border from-purple-300 to-indigo-600 shadow-md shadow-black/20 ring-1 ring-black/10 dark:border-0 dark:shadow-white/10 dark:ring-black/50">
+                <div className="absolute inset-1 aspect-square rounded-full border border-white/35 bg-black/15"></div>
+                <div className="absolute inset-px aspect-square rounded-full border border-dashed border-white/25"></div>
+                <Sparkle className="size-3 fill-white stroke-white drop-shadow-sm" />
+              </div>
+              <span className="text-[13px] font-medium text-foreground">Mist AI</span>
+            </div>
+            <p className="text-foreground/70 mx-auto mt-1 max-w-64 text-[12px] leading-tight">AI Workflow Assistant for your LIMS</p>
+            <div className="border-background mx-auto mt-2 h-0.5 w-16 border-b" />
           </div>
-          <span className="text-[13px] font-medium text-foreground">Mist AI</span>
-        </div>
-        <p className="text-foreground/70 mx-auto mt-1 max-w-64 text-[12px] leading-tight">AI Workflow Assistant for your LIMS</p>
-        <div className="border-background mx-auto mt-2 h-0.5 w-16 border-b" />
-      </div>
+        </>
+      )}
 
-      <div ref={messagesRef} className="mt-4 h-64 overflow-y-auto space-y-3 pr-1">
+      <div
+        ref={messagesRef}
+        className={cn(
+          'space-y-3 px-3',
+          !bare && 'mt-4',
+          scroll && 'flex-1 min-h-0 overflow-y-auto pb-3 pt-2'
+        )}
+      >
         {/* User message */}
-        {visibleSteps >= 1 && (
+        {showUserMessage && visibleSteps >= 1 && (
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -194,13 +242,30 @@ export default function LimsAiChatDemo({ className }: LimsAiChatDemoProps) {
                 </ul>
               </div>
               <div className="mt-3 grid grid-cols-2 gap-2 text-[12px]">
-                <div className="rounded-lg bg-foreground/[0.04] p-2">
+                <div className="rounded-md bg-white/60 p-2 ring-1 ring-foreground/10">
                   <div className="text-foreground/70">Median IC50</div>
-                  <div className="text-foreground text-sm font-semibold">12.4 nM</div>
+                  <div className="text-foreground font-mono text-sm font-semibold tabular-nums">12.4 nM</div>
                 </div>
-                <div className="rounded-lg bg-foreground/[0.04] p-2">
+                <div className="rounded-md bg-white/60 p-2 ring-1 ring-foreground/10">
                   <div className="text-foreground/70">Outliers</div>
-                  <div className="text-foreground text-sm font-semibold">3 flagged</div>
+                  <div className="text-foreground font-mono text-sm font-semibold tabular-nums">3 flagged</div>
+                </div>
+              </div>
+              <div className="mt-3 rounded-md bg-white/60 p-2 ring-1 ring-foreground/10">
+                <div className="text-[11px] font-mono text-foreground/70">Binding curve · Compound AF45</div>
+                <div className="mt-1" style={{ height: 100 }}>
+                  <ChartContainer
+                    className="h-full"
+                    config={{ response: { label: 'Response', color: 'hsl(var(--color-foreground))' } }}
+                  >
+                    <LineChart data={bindingCurveData} margin={{ left: 8, right: 8, top: 4, bottom: 4 }}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="x" tick={{ fontSize: 10 }} stroke="currentColor" />
+                      <YAxis tick={{ fontSize: 10 }} stroke="currentColor" />
+                      <ChartTooltip content={<ChartTooltipContent hideIndicator />} />
+                      <Line type="monotone" dataKey="response" stroke="var(--color-response)" strokeWidth={2} dot={false} />
+                    </LineChart>
+                  </ChartContainer>
                 </div>
               </div>
             </div>
@@ -224,10 +289,59 @@ export default function LimsAiChatDemo({ className }: LimsAiChatDemoProps) {
                   <li>Audit trail linked to raw files and instrument logs.</li>
                 </ul>
               </div>
-              <div className="mt-3 flex items-center justify-between rounded-lg bg-foreground/[0.04] p-2">
+              <div className="mt-3 overflow-hidden rounded-md ring-1 ring-foreground/10">
+                <table className="w-full text-[12px]">
+                  <thead className="bg-foreground/[0.04]">
+                    <tr className="*:p-2 *:text-left">
+                      <th className="font-medium text-foreground/70">Compound</th>
+                      <th className="font-medium text-foreground/70">IC50</th>
+                      <th className="font-medium text-foreground/70">MAD×</th>
+                      <th className="font-medium text-foreground/70">Flag</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="*:p-2">
+                      <td className="font-mono">AF45</td>
+                      <td className="font-mono tabular-nums">58.2 nM</td>
+                      <td className="font-mono tabular-nums">3.4</td>
+                      <td className="font-mono text-amber-700">outlier</td>
+                    </tr>
+                    <tr className="*:p-2">
+                      <td className="font-mono">BX12</td>
+                      <td className="font-mono tabular-nums">7.9 nM</td>
+                      <td className="font-mono tabular-nums">0.8</td>
+                      <td className="font-mono text-emerald-700">ok</td>
+                    </tr>
+                    <tr className="*:p-2">
+                      <td className="font-mono">CT07</td>
+                      <td className="font-mono tabular-nums">92.1 nM</td>
+                      <td className="font-mono tabular-nums">3.1</td>
+                      <td className="font-mono text-amber-700">outlier</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="mt-3 rounded-md bg-white/60 p-2 ring-1 ring-foreground/10">
+                <div className="text-[11px] font-mono text-foreground/70">Residuals (σ)</div>
+                <div className="mt-1" style={{ height: 88 }}>
+                  <ChartContainer
+                    className="h-full"
+                    config={{ r: { label: 'Residual', color: 'hsl(var(--color-foreground))' } }}
+                  >
+                    <BarChart data={residualsData} margin={{ left: 8, right: 8, top: 4, bottom: 4 }}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="i" tick={{ fontSize: 10 }} stroke="currentColor" />
+                      <YAxis tick={{ fontSize: 10 }} stroke="currentColor" />
+                      <ChartTooltip content={<ChartTooltipContent hideIndicator />} />
+                      <Bar dataKey="r" fill="var(--color-r)" radius={2} />
+                    </BarChart>
+                  </ChartContainer>
+                </div>
+              </div>
+              <div className="mt-3 flex items-center justify-between rounded-md bg-white/60 p-2 ring-1 ring-foreground/10">
                 <div>
                   <div className="text-[12px] text-foreground/70">Merge Request</div>
-                  <div className="text-sm font-medium text-foreground">#412 · Binding Assay · Golden Record</div>
+                  <div className="font-mono text-sm font-medium text-foreground">#412 · Binding Assay · Golden Record</div>
                 </div>
                 <div className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[11px] font-medium text-emerald-700 ring-1 ring-emerald-500/20">ready</div>
               </div>
@@ -236,34 +350,39 @@ export default function LimsAiChatDemo({ className }: LimsAiChatDemoProps) {
         )}
       </div>
 
-      <div className="bg-foreground/5 -mx-3 -mb-3 mt-4 space-y-3 rounded-lg p-3">
-        <div className="text-muted-foreground text-sm">Ask Anything</div>
-        <div className="flex justify-between">
-          <div className="flex gap-2">
+      {showPrompt && (
+        <div className={cn(
+          'space-y-3 rounded-lg border border-foreground/10',
+          bare ? 'mt-3 p-2 bg-foreground/5' : 'bg-foreground/5 -mx-3 -mb-3 mt-4 p-3'
+        )}>
+          <div className="text-muted-foreground text-sm">Ask Anything</div>
+          <div className="flex justify-between">
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                size="icon"
+                className="size-7 rounded-2xl bg-transparent shadow-none"
+              >
+                <Plus />
+              </Button>
+              <Button
+                variant="outline"
+                size="icon"
+                className="size-7 rounded-2xl bg-transparent shadow-none"
+              >
+                <Globe />
+              </Button>
+            </div>
+
             <Button
-              variant="outline"
               size="icon"
-              className="size-7 rounded-2xl bg-transparent shadow-none"
+              className="bg-foreground text-background size-7 rounded-2xl"
             >
-              <Plus />
-            </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              className="size-7 rounded-2xl bg-transparent shadow-none"
-            >
-              <Globe />
+              <ArrowUp strokeWidth={2} />
             </Button>
           </div>
-
-          <Button
-            size="icon"
-            className="bg-foreground text-background size-7 rounded-2xl"
-          >
-            <ArrowUp strokeWidth={2} />
-          </Button>
         </div>
-      </div>
+      )}
     </div>
   )
 }

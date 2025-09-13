@@ -17,7 +17,7 @@ export function TextOnlySlide({ eyebrow, title, children, align = 'start', class
         <div className="@container py-24">
           <div className="mx-auto w-full max-w-3xl px-6 xl:px-0">
             <DecoratedPanel className="p-8">
-              <div className="space-y-3 text-center">
+              <div className="space-y-10 text-center">
                 {eyebrow ? (
                   <h2 className="text-sm font-medium uppercase tracking-wide text-stone-500">{eyebrow}</h2>
                 ) : null}
