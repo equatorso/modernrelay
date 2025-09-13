@@ -1,19 +1,11 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { ChevronLeft, ChevronRight, Zap, Sparkles, GitBranch, BadgeCheck } from "lucide-react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { motion } from "motion/react"
 import { Logo } from "@/components/logo"
-import { ChartIllustration } from "@/components/chart-illustration"
-import { InvoiceIllustration } from "@/components/invoice-illustration"
-import { IntegrationsIllustration } from "@/components/integrations-illustration"
-import { DropdownIllustration } from "@/components/dropdown-illustration"
-import LogoCloud from "@/components/logo-cloud"
-import { Table } from "@/components/table"
-import { Card } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 interface SlideProps {
   children: React.ReactNode
@@ -22,214 +14,242 @@ interface SlideProps {
 
 function Slide({ children, className }: SlideProps) {
   return (
-    <div className={cn("w-full h-screen flex flex-col justify-center items-center p-8", className)}>
-      <div className="w-full max-w-6xl mx-auto">
+    <div className={cn("w-full h-screen flex flex-col justify-center items-center px-6", className)}>
+      <div className="w-full max-w-5xl mx-auto">
         {children}
       </div>
     </div>
   )
 }
 
-// --- Individual Slide Components ---
+// --- Text-first Slide Components (smaller typography, black/stone palette) ---
 
 function TitleSlide() {
   return (
-    <Slide className="bg-background text-center">
-      <div className="space-y-8">
-        <Logo className="h-12 w-auto mx-auto mb-12" />
-        <h1 className="text-6xl font-bold tracking-tight">
-          The Foundation for AI-Powered Biotechnology
+    <Slide className="bg-background">
+      <div className="space-y-6 text-center">
+        <div className="flex items-center justify-center gap-6">
+          <Logo className="h-8 w-auto" />
+          <span className="text-stone-400 text-sm">×</span>
+          <div className="h-8 w-20 rounded bg-stone-200/60" aria-hidden />
+        </div>
+        <h1 className="text-2xl font-semibold leading-tight text-zinc-900">
+          The AI-native Lab Operating System
         </h1>
-        <p className="text-2xl text-muted-foreground max-w-3xl mx-auto">
-          Your single source of truth for clean, reproducible, and collaborative science.
+        <p className="text-base text-stone-600 max-w-2xl mx-auto">
+          A New Foundation for [Client's Company Name]
         </p>
-      </div>
-    </Slide>
-  );
-}
-
-function ProblemSlide() {
-  return (
-    <Slide className="bg-muted/30">
-      <div className="text-center space-y-16">
-        <h2 className="text-5xl font-bold">The Hidden Cost of Data Debt</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div className="space-y-4">
-            <div className="w-full h-48 flex items-center justify-center"><ChartIllustration /></div>
-            <h3 className="text-2xl font-semibold">Fragmented Data</h3>
-            <p className="text-lg text-muted-foreground">Silos in spreadsheets and disconnected tools cripple your ability to see the bigger picture.</p>
-          </div>
-          <div className="space-y-4">
-            <div className="w-full h-48 flex items-center justify-center"><InvoiceIllustration /></div>
-            <h3 className="text-2xl font-semibold">Metadata Chaos</h3>
-            <p className="text-lg text-muted-foreground">Manual, inconsistent metadata makes results hard to reproduce and AI models impossible to train.</p>
-          </div>
-          <div className="space-y-4">
-            <div className="w-full h-48 flex items-center justify-center"><IntegrationsIllustration /></div>
-            <h3 className="text-2xl font-semibold">Team Friction</h3>
-            <p className="text-lg text-muted-foreground">High-friction tools take scientists away from the bench, slowing the pace of discovery.</p>
-          </div>
-        </div>
       </div>
     </Slide>
   )
 }
 
-function FoundationSlide() {
-    return (
-        <Slide className="bg-background">
-            <div className="text-center space-y-12">
-                <h2 className="text-5xl font-bold">A Living System of Record, Built for Biology</h2>
-                <p className="text-2xl text-muted-foreground max-w-4xl mx-auto">
-                    Introducing a unified platform where your data is born structured, connected, and AI-ready—making compliance and reproducibility byproducts of great science, not chores.
-                </p>
-                <div className="pt-8">
-                    <Table />
-                </div>
-            </div>
-        </Slide>
-    )
+function BrokenStateSlide() {
+  return (
+    <Slide className="bg-zinc-50">
+      <div className="grid md:grid-cols-2 gap-8 items-start">
+        <div className="space-y-2">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-stone-500">The Broken State</h2>
+          <h3 className="text-2xl font-semibold text-zinc-900">Your most valuable asset—your data—is scattered and dying.</h3>
+        </div>
+        <ul className="space-y-3 text-base text-stone-700">
+          <li>Each tool holds a piece of the puzzle, but none see the whole picture.</li>
+          <li>Scientists waste time on digital logistics: copying data and reconstructing experiments.</li>
+          <li>Context is lost, reproducibility suffers, and compliance becomes a manual cleanup project.</li>
+        </ul>
+      </div>
+    </Slide>
+  )
 }
 
-function CollaborationSlide() {
+function NewParadigmSlide() {
   return (
-    <Slide className="bg-muted/20">
-      <div className="grid lg:grid-cols-2 gap-16 items-center">
-        <div className="space-y-6">
-          <h2 className="text-5xl font-bold">Capture Every Detail, Effortlessly</h2>
-          <p className="text-xl text-muted-foreground">
-            Our modular repositories adapt to your science. From protein sequences to imaging data, define your data models once. Then, let your team (and our AI) capture data from anywhere with near-zero friction.
-          </p>
-            <ul className="space-y-3 text-lg">
-                <li className="flex items-center gap-3"><BadgeCheck className="text-primary size-6" /> Custom data models & ontologies</li>
-                <li className="flex items-center gap-3"><BadgeCheck className="text-primary size-6" /> Ingest from notes, CSVs, voice, and code</li>
-                <li className="flex items-center gap-3"><BadgeCheck className="text-primary size-6" /> Granular permissions and audit trails</li>
+    <Slide className="bg-background">
+      <div className="grid md:grid-cols-2 gap-8 items-start">
+        <div className="space-y-2">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-stone-500">The New Paradigm</h2>
+          <h3 className="text-2xl font-semibold text-zinc-900">A Foundational OS for Human-AI Collaboration.</h3>
+        </div>
+        <ul className="space-y-3 text-base text-stone-700">
+          <li>A single source of truth that powers your entire R&D lifecycle.</li>
+          <li>It doesn't replace every tool; it unifies them.</li>
+          <li>Designed from first principles for humans and AI agents to collaborate on pristine data.</li>
+        </ul>
+      </div>
+    </Slide>
+  )
+}
+
+function PillarAiNativeSlide() {
+  return (
+    <Slide className="bg-zinc-50">
+      <div className="grid md:grid-cols-2 gap-8 items-start">
+        <div className="space-y-2">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-stone-500">Pillar 1 — Intelligence Layer</h2>
+          <h3 className="text-2xl font-semibold text-zinc-900">AI as a Core Team Member, Not a Gadget.</h3>
+        </div>
+        <ul className="space-y-3 text-base text-stone-700">
+          <li>LLMs are woven into the fabric of the OS—never an afterthought.</li>
+          <li>Agents read, write, and reason about your data to enforce structure and automate tasks.</li>
+          <li>The AI Cursor becomes your command line to query, analyze, and visualize in natural language.</li>
+        </ul>
+      </div>
+    </Slide>
+  )
+}
+
+function PillarBranchingSlide() {
+  return (
+    <Slide className="bg-background">
+      <div className="grid md:grid-cols-2 gap-8 items-start">
+        <div className="space-y-2">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-stone-500">Pillar 2 — Collaboration Layer</h2>
+          <h3 className="text-2xl font-semibold text-zinc-900">Git-Style Branching for Science.</h3>
+        </div>
+        <ul className="space-y-3 text-base text-stone-700">
+          <li>Explore hypotheses in isolated branches without corrupting validated data.</li>
+          <li>Enable true parallel work across humans and AI agents.</li>
+          <li>Transparent approval and merge with an audit trail ensures 21 CFR Part 11 compliance.</li>
+        </ul>
+      </div>
+    </Slide>
+  )
+}
+
+function PillarModularSlide() {
+  return (
+    <Slide className="bg-zinc-50">
+      <div className="grid md:grid-cols-2 gap-8 items-start">
+        <div className="space-y-2">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-stone-500">Pillar 3 — Extensible Foundation</h2>
+          <h3 className="text-2xl font-semibold text-zinc-900">An OS That Conforms to Your Science.</h3>
+        </div>
+        <ul className="space-y-3 text-base text-stone-700">
+          <li>Define custom data models and ontologies that match your unique biology.</li>
+          <li>Create new modules or integrate instruments and databases via a unified data layer.</li>
+          <li>Adapt the platform as your assays and modalities evolve—future-proof by design.</li>
+        </ul>
+      </div>
+    </Slide>
+  )
+}
+
+function RealWorldSlide() {
+  return (
+    <Slide className="bg-background">
+      <div className="space-y-6">
+        <div className="space-y-2">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-stone-500">The OS in Action</h2>
+          <h3 className="text-2xl font-semibold text-zinc-900">From a New Sequence to a Key Insight in Hours.</h3>
+        </div>
+        <div className="grid md:grid-cols-2 gap-8">
+          <ul className="space-y-3 text-base text-stone-700">
+            <li><span className="font-medium text-zinc-900">1. The Task (Branching):</span> Anna branches off the Standard Binding Assay to test variant AF45 in a safe, versioned space.</li>
+            <li><span className="font-medium text-zinc-900">2. Execution & Capture (AI-Native Ingest):</span> Uploads a .csv and a photo of handwritten notes.</li>
+            <li><span className="font-medium text-zinc-900">3. The OS at Work:</span></li>
+            <ul className="ml-5 list-disc space-y-2 text-stone-700">
+              <li><span className="font-medium text-zinc-900">AI-Powered Metadata Extraction:</span> Auto-populates Protein_ID, Compound_ID, etc.</li>
+              <li><span className="font-medium text-zinc-900">Event-Based Workflow:</span> Triggers IC50 calculation and anomaly detection.</li>
+              <li><span className="font-medium text-zinc-900">Integrated Knowledge Hub:</span> Links AF45 to internal sequences and UniProt.</li>
             </ul>
-        </div>
-        <div>
-            <Card className="p-8">
-                 <h3 className="font-semibold mb-4">Example: Protein Sequence Repository</h3>
-                 <div className="space-y-2 font-mono text-sm">
-                    <p><span className="text-primary">Entry ID:</span> PXN_0012</p>
-                    <p><span className="text-primary">Sequence:</span> MTEYKLVVVGAG... </p>
-                    <p><span className="text-primary">Source:</span> Lab Protocol #42</p>
-                    <p><span className="text-primary">Extracted By:</span> AI Agent (GPT-4)</p>
-                    <p><span className="text-primary">Timestamp:</span> 2025-09-13T14:00:00Z</p>
-                 </div>
-            </Card>
+          </ul>
+          <ul className="space-y-3 text-base text-stone-700">
+            <li><span className="font-medium text-zinc-900">4. Insight & Merge:</span></li>
+            <ul className="ml-5 list-disc space-y-2 text-stone-700">
+              <li>Use AI Cursor to compare binding curves; plot appears instantly.</li>
+              <li>Submit merge request; review data, plots, and audit trail; approve to update the Golden Record.</li>
+            </ul>
+          </ul>
         </div>
       </div>
     </Slide>
   )
 }
 
-function AiCopilotSlide() {
-    return (
-        <Slide className="bg-background">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-                <div>
-                   <DropdownIllustration />
-                </div>
-                <div className="space-y-6">
-                    <h2 className="text-5xl font-bold">Your Data's Intelligent Partner</h2>
-                    <p className="text-xl text-muted-foreground">
-                        Don't just store data; collaborate with it. Our AI copilot understands your scientific context to automate metadata extraction, generate insights, and help you query your entire knowledge base in plain English.
-                    </p>
-                    <div className="grid grid-cols-2 gap-6 pt-4">
-                        <div className="space-y-2">
-                           <Sparkles className="text-primary" />
-                           <h3 className="font-semibold text-lg">Automated Metadata</h3>
-                           <p className="text-muted-foreground">Extracts key info from protocols, scripts, and notes.</p>
-                        </div>
-                        <div className="space-y-2">
-                           <Zap className="text-primary" />
-                           <h3 className="font-semibold text-lg">Instant Analysis</h3>
-                           <p className="text-muted-foreground">Generate plots, summaries, and new hypotheses.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </Slide>
-    );
-}
-
-const BranchingIllustration = () => (
-    <div className="relative w-full h-64 flex items-center justify-center">
-        <div className="absolute top-1/2 left-0 w-full h-1 bg-muted-foreground/30 rounded-full" />
-        <div className="absolute top-1/2 left-0 w-1/4 h-1 bg-primary rounded-full" />
-
-        <div className="absolute left-1/4 w-3/4 h-24 border-b-2 border-l-2 border-dashed border-primary rounded-bl-full" />
-        <div className="absolute left-1/4 w-3/4 h-24 border-t-2 border-l-2 border-dashed border-sky-500 rounded-tl-full" />
-        
-        <div className="absolute top-4 right-20 flex items-center gap-2 bg-background p-2 rounded-lg">
-            <Avatar className="size-8"><AvatarImage src="/avatars/shadcn.jpg" /><AvatarFallback>SC</AvatarFallback></Avatar>
-            <span className="font-semibold text-sky-500">Scientist's Branch</span>
-        </div>
-
-        <div className="absolute bottom-4 right-20 flex items-center gap-2 bg-background p-2 rounded-lg">
-            <Sparkles className="text-primary size-8" />
-            <span className="font-semibold text-primary">AI Agent's Branch</span>
-        </div>
-
-        <div className="absolute top-1/2 right-0 transform -translate-y-1/2 flex items-center gap-2 p-3 bg-green-500/10 text-green-600 rounded-lg border border-green-500/20">
-            <BadgeCheck />
-            <span className="font-semibold">Merge Approved</span>
-        </div>
-    </div>
-);
-
-
-function ReproducibilitySlide() {
-    return (
-        <Slide className="bg-muted/20">
-             <div className="grid lg:grid-cols-2 gap-16 items-center">
-                <div className="space-y-6">
-                    <h2 className="text-5xl font-bold">Experiment in Parallel. Merge with Confidence.</h2>
-                    <p className="text-xl text-muted-foreground">
-                        Our Git-inspired branching model allows your team and AI agents to work in parallel. Propose changes, run virtual experiments, and merge back to the main dataset with a full audit trail and approval process.
-                    </p>
-                    <p className="text-xl text-muted-foreground">This ensures both innovation speed and scientific rigor.</p>
-                </div>
-                <div>
-                    <BranchingIllustration />
-                </div>
-            </div>
-        </Slide>
-    )
-}
-
-function EcosystemSlide() {
-    return (
-        <Slide className="bg-background">
-            <div className="text-center space-y-12">
-                <h2 className="text-5xl font-bold">An Automated, Connected Lab</h2>
-                <p className="text-2xl text-muted-foreground max-w-4xl mx-auto">
-                    Automate routine tasks with event-based workflows and connect to a universe of public databases and your existing lab software.
-                </p>
-                <LogoCloud />
-            </div>
-        </Slide>
-    );
-}
-
-function CtaSlide() {
+function FlywheelSlide() {
   return (
-    <Slide className="bg-gradient-to-br from-purple-600 to-teal-600 text-white">
-      <div className="text-center space-y-8">
-        <h2 className="text-5xl font-bold">Build on a Foundation of Clean, Collaborative Data</h2>
-        <p className="text-xl opacity-90 max-w-3xl mx-auto">
-          Ensure reproducibility, accelerate your AI roadmap, and get ready for the future of discovery.
-        </p>
-        <div className="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center pt-8">
-          <Button size="lg" variant="secondary" className="bg-white text-gray-900 hover:bg-gray-100">
-            Schedule a Demo
-          </Button>
+    <Slide className="bg-zinc-50">
+      <div className="grid md:grid-cols-2 gap-8 items-start">
+        <div className="space-y-2">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-stone-500">The R&D Flywheel</h2>
+          <h3 className="text-2xl font-semibold text-zinc-900">The Lab OS Creates a Virtuous Cycle.</h3>
         </div>
-         <div className="flex justify-center items-center space-x-8 text-sm opacity-75 pt-8">
-            <span>✓ Built for Compliance</span>
-            <span>✓ Deploys in Your Cloud</span>
-            <span>✓ Dedicated Onboarding</span>
+        <div className="space-y-4">
+          <ol className="list-decimal ml-5 space-y-1 text-base text-stone-700">
+            <li>AI-Structured Data</li>
+            <li>Faster, Parallel Experiments</li>
+            <li>Deeper, Cross-Domain Insights</li>
+            <li>Smarter, Data-Driven Hypotheses</li>
+          </ol>
+          <p className="text-base text-stone-700">This is more than efficiency; it's a system that compounds. Better data → better analysis → smarter experiments → more high-quality data.</p>
+        </div>
+      </div>
+    </Slide>
+  )
+}
+
+function ValuationSlide() {
+  return (
+    <Slide className="bg-background">
+      <div className="grid md:grid-cols-2 gap-8 items-start">
+        <div className="space-y-2">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-stone-500">From Day Zero to Maximum Valuation</h2>
+          <h3 className="text-2xl font-semibold text-zinc-900">Your Data is Always Diligence-Ready.</h3>
+        </div>
+        <ul className="space-y-3 text-base text-stone-700">
+          <li><span className="font-medium text-zinc-900">Regulators:</span> Immutable, 21 CFR Part 11 audit trail makes filings a reporting exercise.</li>
+          <li><span className="font-medium text-zinc-900">Investors:</span> Demonstrate an R&D engine built for speed and scale.</li>
+          <li><span className="font-medium text-zinc-900">Partners:</span> Present a queryable, unimpeachable data asset that reduces diligence friction.</li>
+        </ul>
+      </div>
+    </Slide>
+  )
+}
+
+function FoundationPlanSlide() {
+  return (
+    <Slide className="bg-zinc-50">
+      <div className="space-y-6">
+        <div className="space-y-2">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-stone-500">Let's Build Your Foundation</h2>
+          <h3 className="text-2xl font-semibold text-zinc-900">Your Partner in Building a Generational Biotech.</h3>
+        </div>
+        <div className="grid md:grid-cols-3 gap-8 text-base text-stone-700">
+          <div className="space-y-2">
+            <div className="text-xs font-medium uppercase tracking-wide text-stone-500">Phase 1: Foundation (Weeks 1–2)</div>
+            <ul className="list-disc ml-5 space-y-1">
+              <li>Onboard your team to the Lab OS.</li>
+              <li>Define core data models (Proteins, Assays).</li>
+              <li>Deploy AI agents for initial protocols.</li>
+            </ul>
           </div>
+          <div className="space-y-2">
+            <div className="text-xs font-medium uppercase tracking-wide text-stone-500">Phase 2: Acceleration (Months 1–3)</div>
+            <ul className="list-disc ml-5 space-y-1">
+              <li>Implement event-driven workflows.</li>
+              <li>Integrate external knowledge hubs and internal software.</li>
+              <li>Scale Human–AI collaboration across projects.</li>
+            </ul>
+          </div>
+          <div className="space-y-2">
+            <div className="text-xs font-medium uppercase tracking-wide text-stone-500">Ongoing Partnership</div>
+            <ul className="list-disc ml-5 space-y-1">
+              <li>Evolve the OS with your science.</li>
+              <li>From first discovery to first-in-human.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </Slide>
+  )
+}
+
+function QASlide() {
+  return (
+    <Slide className="bg-background">
+      <div className="space-y-4 text-center">
+        <h2 className="text-2xl font-semibold text-zinc-900">Q&A</h2>
+        <p className="text-base text-stone-700">[Your Name] · [Title] · [email@company.com] · [Demo Link]</p>
       </div>
     </Slide>
   )
@@ -237,17 +257,21 @@ function CtaSlide() {
 
 const slides = [
   { id: 1, content: <TitleSlide /> },
-  { id: 2, content: <ProblemSlide /> },
-  { id: 3, content: <FoundationSlide /> },
-  { id: 4, content: <CollaborationSlide /> },
-  { id: 5, content: <AiCopilotSlide /> },
-  { id: 6, content: <ReproducibilitySlide /> },
-  { id: 7, content: <EcosystemSlide /> },
-  { id: 8, content: <CtaSlide /> },
+  { id: 2, content: <BrokenStateSlide /> },
+  { id: 3, content: <NewParadigmSlide /> },
+  { id: 4, content: <PillarAiNativeSlide /> },
+  { id: 5, content: <PillarBranchingSlide /> },
+  { id: 6, content: <PillarModularSlide /> },
+  { id: 7, content: <RealWorldSlide /> },
+  { id: 8, content: <FlywheelSlide /> },
+  { id: 9, content: <ValuationSlide /> },
+  { id: 10, content: <FoundationPlanSlide /> },
+  { id: 11, content: <QASlide /> },
 ]
 
 export default function SalesDeck() {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const totalSlides = slides.length
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length)
@@ -265,16 +289,16 @@ export default function SalesDeck() {
     const handleKeyPress = (event: KeyboardEvent) => {
       if (event.key === "ArrowRight" || event.key === " ") {
         event.preventDefault()
-        if (currentSlide < slides.length - 1) nextSlide()
+        setCurrentSlide((prev) => (prev < totalSlides - 1 ? prev + 1 : prev))
       } else if (event.key === "ArrowLeft") {
         event.preventDefault()
-        if (currentSlide > 0) prevSlide()
+        setCurrentSlide((prev) => (prev > 0 ? prev - 1 : prev))
       }
     }
 
     window.addEventListener("keydown", handleKeyPress)
     return () => window.removeEventListener("keydown", handleKeyPress)
-  }, [currentSlide])
+  }, [totalSlides])
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-background">
@@ -304,9 +328,10 @@ export default function SalesDeck() {
             </Button>
 
             <div className="flex space-x-2">
-              {slides.map((_, index) => (
+              {slides.map((slide, index) => (
                 <button
-                  key={index}
+                  key={slide.id}
+                  type="button"
                   onClick={() => goToSlide(index)}
                   className={cn(
                     "rounded-full transition-all duration-300 hover:scale-110",
