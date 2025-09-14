@@ -41,7 +41,7 @@ export function TableIllustration({
   return (
     <div className={cn("relative inline-flex flex-col items-stretch", className)}>
       {label ? (
-        <div className="mb-1 text-center text-[10px] font-medium leading-none text-stone-600">
+        <div className="mb-1 text-center text-[10px] leading-none text-stone-600">
           {label}
         </div>
       ) : null}

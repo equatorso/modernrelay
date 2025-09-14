@@ -9,7 +9,7 @@ type BranchingIllustrationProps = {
 
 export function BranchingIllustration({ className }: BranchingIllustrationProps) {
   return (
-    <div className={cn("relative isolate h-56 w-full", className)}>
+    <div className={cn("relative isolate h-56 w-full text-stone-600", className)}>
       {/* Base repo/table */}
       <motion.div
         initial={{ opacity: 0, y: 8 }}

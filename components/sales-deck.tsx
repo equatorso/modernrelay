@@ -12,10 +12,13 @@ import { Vercel } from "@/components/logos/vercel";
 import VisualStudioCode from "@/components/logos/vs-code";
 import { TextOnlySlide } from "@/components/slides/text-only-slide";
 
-import { GridSlide, twoTallTwoSmall } from "@/components/slides/grid-slide";
+import { GridSlide } from "@/components/slides/grid-slide";
 import { SlideFrame } from "@/components/slides/slide-frame";
 import { BranchingIllustration } from "@/components/branching-illustration";
 import LimsAiChatDemo from "@/components/ui/lims-ai-chat-demo";
+import { SequenceIllustration } from "@/components/sequence-illustration";
+import BrandLogosGrid from "@/components/brand-logos-grid";
+import LogoCloud from "./logo-cloud";
 
 // --- Text-first Slide Components (smaller typography, black/stone palette) ---
 
@@ -112,14 +115,10 @@ function PillarAiNativeSlide() {
 									structure and automate tasks.
 								</li>
 								<li>
-									The AI Cursor becomes your command line to query, analyze, and
+									The Assistant becomes your command line to query, analyze, and
 									visualize in natural language.
 								</li>
 							</ul>
-							<p className="text-[12px] text-stone-600">
-								Demo: High‑value LIMS workflow — ask for IC50s, QC, and prepare
-								a merge.
-							</p>
 						</div>
 					),
 				},
@@ -505,46 +504,114 @@ function ValuationSlide() {
 
 function FoundationPlanSlide() {
 	return (
-		<TextOnlySlide
+		<GridSlide
 			className="bg-zinc-50"
-			eyebrow="Let's Build Your Foundation"
-			title={<span>Your Partner in Building a Generational Biotech.</span>}
-		>
-			<div className="space-y-6">
-				<div className="grid md:grid-cols-3 gap-8">
-					<div className="space-y-2">
-						<div className="text-xs font-medium uppercase tracking-wide text-stone-500">
-							Phase 1: Foundation (Weeks 1–2)
+			gridClassName="grid-cols-2 auto-rows-fr"
+			gridInnerClassName="divide-foreground/10"
+			items={[
+				{
+					id: "left-content",
+					padded: true,
+					content: (
+						<div className="space-y-3">
+							<div className="text-xs font-medium uppercase tracking-wide text-stone-500">
+								Let's Build Your Foundation
+							</div>
+							<h3 className="text-xl font-semibold text-zinc-900">
+								Forward-Deployed Engineering, Embedded With Your Team
+							</h3>
+							<div className="space-y-4 pt-6 text-stone-700">
+								<p className="text-sm">
+									We partner as forward-deployed engineers, sitting with your
+									scientists to ship value on day one. We co-own outcomes, not
+									handoffs—integrating protocols, instruments, and analysis directly
+									into your workflow.
+								</p>
+								<ul className="text-sm ml-4 list-disc space-y-1">
+									<li>Embed alongside assay owners and ops leads</li>
+									<li>Translate scientific intent into robust, automated workflows</li>
+									<li>Tight loops: instrument data → OS events → decisions</li>
+									<li>Audit-ready by default; designed for scalability</li>
+								</ul>
+								<p className="text-sm">
+									This partnership model accelerates time-to-impact while building
+									the foundation your team will iterate on.
+								</p>
+							</div>
 						</div>
-						<ul className="list-disc ml-5 space-y-1">
-							<li>Onboard your team to the Lab OS.</li>
-							<li>Define core data models (Proteins, Assays).</li>
-							<li>Deploy AI agents for initial protocols.</li>
-						</ul>
-					</div>
-					<div className="space-y-2">
-						<div className="text-xs font-medium uppercase tracking-wide text-stone-500">
-							Phase 2: Acceleration (Months 1–3)
+					),
+				},
+				{
+					id: "right-visual",
+					padded: true,
+					content: (
+						<div className="flex h-full items-center justify-center">
+							<SequenceIllustration />
 						</div>
-						<ul className="list-disc ml-5 space-y-1">
-							<li>Implement event-driven workflows.</li>
-							<li>Integrate external knowledge hubs and internal software.</li>
-							<li>Scale Human–AI collaboration across projects.</li>
-						</ul>
-					</div>
-					<div className="space-y-2">
-						<div className="text-xs font-medium uppercase tracking-wide text-stone-500">
-							Ongoing Partnership
-						</div>
-						<ul className="list-disc ml-5 space-y-1">
-							<li>Evolve the OS with your science.</li>
-							<li>From first discovery to first-in-human.</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</TextOnlySlide>
+					),
+				},
+			]}
+		/>
 	);
+}
+
+function TeamSlide() {
+    return (
+        <GridSlide
+            className="bg-background"
+            gridClassName="grid-cols-2 auto-rows-fr"
+            gridInnerClassName="divide-foreground/10"
+            items={[
+                {
+                    id: 'left-content',
+                    padded: true,
+                    content: (
+                        <div className="space-y-3">
+                            <div className="text-xs font-medium uppercase tracking-wide text-stone-500">Why Us</div>
+                            <h3 className="text-xl font-semibold text-zinc-900">Built by a Team That Has Lived This Problem</h3>
+                            <ul className="space-y-3 text-stone-700 pt-6">
+                                <li>
+                                    Built AI-native data systems across biotech and research—bridging lab workflows,
+                                    knowledge graphs, and modern infra.
+                                </li>
+                                <li>
+                                    Hands-on with LLMs, structured data models, and instrument integrations—shipping
+                                    production systems end-to-end.
+                                </li>
+                                <li>
+                                    Backgrounds from Berkeley, Recursion Pharma, Cambridge University, the Francis Crick Institute,
+                                    and Flagship Pioneering.
+                                </li>
+                            </ul>
+                        </div>
+                    )
+                },
+                {
+                  id: 'right-logos',
+                  padded: true,
+                  content: (
+                      <div className="flex h-full items-center justify-center">
+                          <div className="w-full max-w-md">
+                            <LogoCloud logos={[{
+                              src: "/Recursion.png", alt: "Recursion Pharma", height: "32", className: "h-12"
+                            },{
+                              src: "/flagship.png", alt: "Flagship Pioneering", height: "32", className: "h-8 text-gray-500"
+                            },{
+                              src: "/Cambridge.png", alt: "Cambridge University", height: "12", className: "text-gray-500"
+                            },{
+                              src: "/crick.avif", alt: "Francis Crick Institute", className: "h-15 -mt-5 "
+                            }, {
+                              src: "/Berkeley.png", alt: "University of California, Berkeley", className: "h-5 text-gray-500"
+                            },{
+                              src: "/goldman.png", alt: "Goldman Sachs", className: "h-7 text-gray-500"
+                            }]} />
+                          </div>
+                      </div>
+                  )
+                }
+            ]}
+        />
+    )
 }
 
 function QASlide() {
@@ -572,7 +639,8 @@ const slides = [
 	{ id: 8, content: <FlywheelSlide /> },
 	{ id: 9, content: <ValuationSlide /> },
 	{ id: 10, content: <FoundationPlanSlide /> },
-	{ id: 11, content: <QASlide /> },
+	{ id: 11, content: <TeamSlide /> },
+	{ id: 12, content: <QASlide /> },
 ];
 
 export default function SalesDeck() {
