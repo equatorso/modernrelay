@@ -1,25 +1,32 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, FileText, Folder, AlertTriangle, Link2Off, CheckCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import {
+	AlertTriangle,
+	CheckCircle,
+	ChevronLeft,
+	ChevronRight,
+	FileText,
+	Folder,
+	Link2Off,
+} from "lucide-react";
 import { motion } from "motion/react";
+import { useEffect, useState } from "react";
+import { BranchingIllustration } from "@/components/branching-illustration";
+import { EventWorkflowIllustration } from "@/components/event-workflow-illustration";
 import { Logo } from "@/components/logo";
-import OpenAI from "@/components/logos/open-ai";
 import ClaudeAI from "@/components/logos/claude";
+import OpenAI from "@/components/logos/open-ai";
 import { Vercel } from "@/components/logos/vercel";
 import VisualStudioCode from "@/components/logos/vs-code";
-import { TextOnlySlide } from "@/components/slides/text-only-slide";
-
-import { GridSlide } from "@/components/slides/grid-slide";
-import { SlideFrame } from "@/components/slides/slide-frame";
-import { BranchingIllustration } from "@/components/branching-illustration";
-import LimsAiChatDemo from "@/components/ui/lims-ai-chat-demo";
 import { SequenceIllustration } from "@/components/sequence-illustration";
+import { GridSlide } from "@/components/slides/grid-slide";
+import { SlideBody, SlideHeader } from "@/components/slides/slide-components";
+import { SlideFrame } from "@/components/slides/slide-frame";
+import { TextOnlySlide } from "@/components/slides/text-only-slide";
+import { Button } from "@/components/ui/button";
+import LimsAiChatDemo from "@/components/ui/lims-ai-chat-demo";
+import { cn } from "@/lib/utils";
 import LogoCloud from "./logo-cloud";
-import { EventWorkflowIllustration } from "@/components/event-workflow-illustration";
- 
 
 // --- Text-first Slide Components (smaller typography, black/stone palette) ---
 
@@ -46,13 +53,22 @@ function TitleSlide() {
 // Slide 2 — Biotech Dilemma with diverging paths illustration
 function BiotechDilemmaSlide() {
 	const left = (
-		<div className="space-y-3">
-			<div className="text-xs font-medium uppercase tracking-wide text-stone-500">The Biotech Dilemma</div>
-			<h3 className="text-xl font-semibold text-zinc-900">The Seeds of Future Failure Are Sown on Day One</h3>
-			<div className="space-y-3 text-stone-700 pt-6">
-				<p className="text-sm">You've raised your first few million. Your team is brilliant. Your science is promising. On Day Zero, a hidden choice determines your trajectory:</p>
-				<p className="text-sm">Your valuation ultimately follows the quality and integrity of your data. Start with a system designed for that reality.</p>
-			</div>
+		<div className="space-y-6">
+			<SlideHeader
+				eyebrow="The Biotech Dilemma"
+				title="The Seeds of Future Failure Are Sown on Day One"
+			/>
+			<SlideBody className="space-y-3">
+				<p>
+					You've raised your first few million. Your team is brilliant. Your
+					science is promising. On Day Zero, a hidden choice determines your
+					trajectory:
+				</p>
+				<p>
+					Your valuation ultimately follows the quality and integrity of your
+					data. Start with a system designed for that reality.
+				</p>
+			</SlideBody>
 		</div>
 	);
 
@@ -60,33 +76,47 @@ function BiotechDilemmaSlide() {
 		<div className="flex h-full items-center justify-center">
 			<div className="w-full max-w-md space-y-3">
 				<div className="rounded-md border border-stone-200/60 bg-white p-3">
-					<div className="text-[12px] font-medium text-stone-800">Path A — The Path of Least Resistance</div>
+					<div className="text-[12px] font-medium text-stone-800">
+						Path A — The Path of Least Resistance
+					</div>
 					<div className="mt-2 overflow-hidden rounded border border-stone-200/60 bg-white/60">
-						<div className="bg-stone-50/70 px-2 py-1 text-[10px] font-mono text-stone-500">files</div>
+						<div className="bg-stone-50/70 px-2 py-1 text-[10px] font-mono text-stone-500">
+							files
+						</div>
 						<ul className="divide-y divide-stone-200/60">
 							<li className="flex items-center gap-2 px-2 py-1.5">
 								<FileText className="size-3.5 text-stone-500" />
-								<span className="truncate text-[12px] font-mono text-stone-700">final_final_v2(1).xlsx</span>
+								<span className="truncate text-[12px] font-mono text-stone-700">
+									final_final_v2(1).xlsx
+								</span>
 								<AlertTriangle className="ml-auto size-3.5 text-amber-600" />
 							</li>
 							<li className="flex items-center gap-2 px-2 py-1.5">
 								<FileText className="size-3.5 text-stone-500" />
-								<span className="truncate text-[12px] font-mono text-stone-700">image (copy).png</span>
+								<span className="truncate text-[12px] font-mono text-stone-700">
+									image (copy).png
+								</span>
 								<Link2Off className="ml-auto size-3.5 text-stone-400" />
 							</li>
 							<li className="flex items-center gap-2 px-2 py-1.5">
 								<Folder className="size-3.5 text-stone-500" />
-								<span className="truncate text-[12px] font-mono text-stone-700">results_old/</span>
+								<span className="truncate text-[12px] font-mono text-stone-700">
+									results_old/
+								</span>
 								<AlertTriangle className="ml-auto size-3.5 text-amber-600" />
 							</li>
 							<li className="flex items-center gap-2 px-2 py-1.5">
 								<FileText className="size-3.5 text-stone-500" />
-								<span className="truncate text-[12px] font-mono text-stone-700">protocol_binding_assay_new_NEW (1) (2).pptx</span>
+								<span className="truncate text-[12px] font-mono text-stone-700">
+									protocol_binding_assay_new_NEW (1) (2).pptx
+								</span>
 								<AlertTriangle className="ml-auto size-3.5 text-amber-600" />
 							</li>
 							<li className="flex items-center gap-2 px-2 py-1.5">
 								<FileText className="size-3.5 text-stone-500" />
-								<span className="truncate text-[12px] font-mono text-stone-700">notes - Anna (old).docx</span>
+								<span className="truncate text-[12px] font-mono text-stone-700">
+									notes - Anna (old).docx
+								</span>
 								<Link2Off className="ml-auto size-3.5 text-stone-400" />
 							</li>
 						</ul>
@@ -94,13 +124,20 @@ function BiotechDilemmaSlide() {
 					<ul className="mt-2 list-disc pl-4 text-sm space-y-1">
 						<li>Spreadsheets, slides, shared drives, generic notebooks.</li>
 						<li>Creates Data Debt. Each experiment adds to the chaos.</li>
-						<li>6 months: hard to reproduce. 12 months: diligence becomes archaeology.</li>
+						<li>
+							6 months: hard to reproduce. 12 months: diligence becomes
+							archaeology.
+						</li>
 					</ul>
 				</div>
 				<div className="rounded-md border border-emerald-200/60 bg-emerald-50 p-3">
-					<div className="text-[12px] font-medium text-emerald-800">Path B — The Path of Intentional Design</div>
+					<div className="text-[12px] font-medium text-emerald-800">
+						Path B — The Path of Intentional Design
+					</div>
 					<div className="mt-2 overflow-hidden rounded border border-stone-200/60 bg-white/90 ring-1 ring-foreground/10">
-						<div className="bg-foreground/5 px-2 py-1 text-[10px] font-mono text-stone-700">records</div>
+						<div className="bg-foreground/5 px-2 py-1 text-[10px] font-mono text-stone-700">
+							records
+						</div>
 						<table className="w-full text-[12px]">
 							<thead className="bg-foreground/[0.04]">
 								<tr className="*:px-2 *:py-1 *:text-left *:font-medium *:text-stone-800">
@@ -111,7 +148,9 @@ function BiotechDilemmaSlide() {
 							</thead>
 							<tbody className="divide-y divide-stone-200/60">
 								<tr className="*:px-2 *:py-1">
-									<td className="font-mono text-stone-800">Binding Assay · AF45</td>
+									<td className="font-mono text-stone-800">
+										Binding Assay · AF45
+									</td>
 									<td className="text-stone-600">Assay</td>
 									<td>
 										<span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-1.5 py-0.5 text-[11px] font-medium text-emerald-700 ring-1 ring-emerald-500/20">
@@ -163,6 +202,22 @@ function BiotechDilemmaSlide() {
 	);
 }
 
+function WhatIfSlide() {
+	return (
+		<TextOnlySlide
+			className="bg-zinc-50"
+			align="center"
+			title={
+				<span>
+					What if the path of least resistance
+					<br />
+					built a compounding asset by default?
+				</span>
+			}
+		/>
+	);
+}
+
 // Slide 3 — Vision with minimal lab/connection illustration
 function VisionSlide() {
 	return (
@@ -175,25 +230,43 @@ function VisionSlide() {
 					id: "left-content",
 					padded: true,
 					content: (
-						<div className="space-y-3">
-							<div className="text-xs font-medium uppercase tracking-wide text-stone-500">
-								The Vision
-							</div>
-							<h3 className="text-xl font-semibold text-zinc-900">
-							A New Standard for R&D: Velocity and Integrity by Design
-							</h3>
-							<ul className="space-y-3 text-stone-500 pt-6">
+						<div className="space-y-6">
+							<SlideHeader
+								eyebrow="The Vision"
+								title="A New Standard for R&D: Velocity and Integrity by Design"
+							/>
+							<SlideBody className="space-y-3 text-stone-500">
 								<li>
-									<span className="font-medium text-zinc-900">Your scientists are freed from manual data entry.</span> The system observes protocols, files, and notes; context is captured automatically.
+									<span className="font-medium text-zinc-900">
+										Your scientists are freed from manual data entry.
+									</span>{" "}
+									The system observes protocols, files, and notes; context is
+									captured automatically.
 								</li>
 								<li>
-									<span className="font-medium text-zinc-900">Everything is linked to its origin.</span> Trace any result to assay, batch, sequence, and the notebook entry that spawned it.
+									<span className="font-medium text-zinc-900">
+										Everything is linked to its origin.
+									</span>{" "}
+									Trace any result to assay, batch, sequence, and the notebook
+									entry that spawned it.
 								</li>
 								<li>
-									<span className="font-medium text-zinc-900">Your history becomes a queryable brain.</span> Ask: “Show experiments with protein X vs cell line Y with &gt;20% viability drop. Generate dose–response curves and compare to last quarter.”
+									<span className="font-medium text-zinc-900">
+										Your history becomes a queryable brain.
+									</span>{" "}
+									Ask: “Show experiments with protein X vs cell line Y with
+									&gt;20% viability drop. Generate dose–response curves and
+									compare to last quarter.”
 								</li>
-								<li> <span className="font-medium text-zinc-900">The lab becomes an automated engine for discovery.</span> A new gene sequence automatically triggers structure prediction and primer design.</li>
-							</ul>
+								<li>
+									{" "}
+									<span className="font-medium text-zinc-900">
+										The lab becomes an automated engine for discovery.
+									</span>{" "}
+									A new gene sequence automatically triggers structure
+									prediction and primer design.
+								</li>
+							</SlideBody>
 						</div>
 					),
 				},
@@ -243,14 +316,12 @@ function PillarAiNativeSlide() {
 					id: "left-content",
 					padded: true,
 					content: (
-						<div className="space-y-3">
-							<div className="text-xs font-medium uppercase tracking-wide text-stone-500">
-								Pillar 2 — Intelligence Layer
-							</div>
-							<h3 className="text-xl font-semibold text-zinc-900">
-								AI as a Core Team Member, Not a Gadget.
-							</h3>
-							<ul className="space-y-3 text-stone-700 pt-10">
+						<div className="space-y-6">
+							<SlideHeader
+								eyebrow="Pillar 2 — Intelligence Layer"
+								title="AI as a Core Team Member, Not a Gadget."
+							/>
+							<SlideBody as="ul" className="space-y-3 pt-4">
 								<li>
 									LLMs are woven into the fabric of the OS—never an
 									afterthought.
@@ -263,7 +334,7 @@ function PillarAiNativeSlide() {
 									The Assistant becomes your command line to query, analyze, and
 									visualize in natural language.
 								</li>
-							</ul>
+							</SlideBody>
 						</div>
 					),
 				},
@@ -299,14 +370,12 @@ function PillarBranchingSlide() {
 					id: "left-content",
 					padded: true,
 					content: (
-						<div className="space-y-3">
-							<div className="text-xs font-medium uppercase tracking-wide text-stone-500">
-								Pillar 3 — Collaboration Layer
-							</div>
-							<h3 className="text-xl font-semibold text-zinc-900">
-								Git-Style Branching for Science.
-							</h3>
-							<ul className="space-y-3 text-stone-700 pt-10">
+						<div className="space-y-6">
+							<SlideHeader
+								eyebrow="Pillar 3 — Collaboration Layer"
+								title="Git-Style Branching for Science."
+							/>
+							<SlideBody as="ul" className="space-y-3 pt-4">
 								<li>
 									Explore hypotheses in isolated branches without corrupting
 									validated data.
@@ -316,7 +385,7 @@ function PillarBranchingSlide() {
 									Transparent approval and merge with an audit trail ensures 21
 									CFR Part 11 compliance.
 								</li>
-							</ul>
+							</SlideBody>
 							<div className="pt-2 text-[12px] text-stone-600">
 								<div className="font-mono">Example:</div>
 								<ul className="ml-4 list-disc space-y-1">
@@ -356,52 +425,54 @@ function PillarEventDrivenSlide() {
 					id: "left-content",
 					padded: true,
 					content: (
-						<div className="space-y-4">
-							<div className="text-xs font-medium uppercase tracking-wide text-stone-500">
-								Pillar 4 — Event-Driven Workflows
-							</div>
-							<h3 className="text-xl font-semibold text-zinc-900">
-								Your lab shouldn't just store data; it should act on it.
-							</h3>
-							<p className="pt-4 text-sm text-stone-700">
-								Our platform uses an event-driven architecture to automate the
-								Design-Build-Test-Learn cycle.
-							</p>
-							<div className="space-y-3 text-sm text-stone-700">
-								<div>
-									<p className="font-medium text-zinc-900">
-										When a new event happens...
-									</p>
-									<ul className="mt-1 list-disc space-y-0.5 pl-5 text-stone-600">
-										<li>A scientist uploads a new protein sequence...</li>
-										<li>A plate reader finishes an assay run...</li>
-										<li>An AI flags an anomalous result...</li>
-									</ul>
+						<div className="space-y-6">
+							<SlideHeader
+								eyebrow="Pillar 4 — Event-Driven Workflows"
+								title="Your lab shouldn't just store data; it should act on it."
+							/>
+
+							<SlideBody className="space-y-4 pt-4">
+								<p>
+									Our platform uses an event-driven architecture to automate the
+									Design-Build-Test-Learn cycle.
+								</p>
+								<div className="space-y-3">
+									<div>
+										<p className="font-medium text-zinc-900">
+											When a new event happens...
+										</p>
+										<ul className="mt-1 list-disc space-y-0.5 pl-5 text-stone-600">
+											<li>A scientist uploads a new protein sequence...</li>
+											<li>A plate reader finishes an assay run...</li>
+											<li>An AI flags an anomalous result...</li>
+										</ul>
+									</div>
+									<div>
+										<p className="font-medium text-zinc-900">
+											...an automated workflow can trigger.
+										</p>
+										<ul className="mt-1 list-disc space-y-0.5 pl-5 text-stone-600">
+											<li>
+												...automatically order primers, run a structure
+												prediction, and log the results.
+											</li>
+											<li>
+												...automatically parse the raw data, perform QC,
+												calculate IC50 values, and update the experiment's
+												status.
+											</li>
+											<li>
+												...automatically create a ticket for review and link it
+												to the relevant data.
+											</li>
+										</ul>
+									</div>
 								</div>
-								<div>
-									<p className="font-medium text-zinc-900">
-										...an automated workflow can trigger.
-									</p>
-									<ul className="mt-1 list-disc space-y-0.5 pl-5 text-stone-600">
-										<li>
-											...automatically order primers, run a structure
-											prediction, and log the results.
-										</li>
-										<li>
-											...automatically parse the raw data, perform QC, calculate
-											IC50 values, and update the experiment's status.
-										</li>
-										<li>
-											...automatically create a ticket for review and link it to
-											the relevant data.
-										</li>
-									</ul>
-								</div>
-							</div>
-							<p className="pt-4 text-sm text-stone-700">
-								This is your digital lab technician, working 24/7 to reduce
-								manual work and accelerate the pace of discovery.
-							</p>
+								<p className="pt-4">
+									This is your digital lab technician, working 24/7 to reduce
+									manual work and accelerate the pace of discovery.
+								</p>
+							</SlideBody>
 						</div>
 					),
 				},
@@ -559,14 +630,16 @@ function PillarModularSlide() {
 					id: "left-content",
 					padded: true,
 					content: (
-						<div className="space-y-3">
-							<div className="text-xs font-mono font-medium uppercase text-stone-500">
-								Pillar 1 — Modular unified data layer
-							</div>
-							<h3 className="text-xl font-semibold text-zinc-900">
-								A Modular Single Source of Truth That Adapts to Your Science.
-							</h3>
-							<ul className="space-y-3 text-stone-700 pt-10">
+						<div className="space-y-6">
+							<SlideHeader
+								eyebrow={
+									<span className="font-mono">
+										Pillar 1 — Modular unified data layer
+									</span>
+								}
+								title="A Modular Single Source of Truth That Adapts to Your Science."
+							/>
+							<SlideBody as="ul" className="space-y-3 pt-4">
 								<li>
 									Define custom data models and ontologies that match your
 									unique biology.
@@ -579,7 +652,7 @@ function PillarModularSlide() {
 									Adapt the platform as your assays and modalities
 									evolve—future-proof by design.
 								</li>
-							</ul>
+							</SlideBody>
 						</div>
 					),
 				},
@@ -608,19 +681,17 @@ function RealWorldSlide() {
 					id: "left-content",
 					padded: true,
 					content: (
-						<div className="space-y-3">
-							<div className="text-xs font-medium uppercase tracking-wide text-stone-500">
-								The OS in Action
-							</div>
-							<h3 className="text-xl font-semibold text-zinc-900">
-								From a New Sequence to a Key Insight in Hours.
-							</h3>
-							<div className="space-y-4 text-stone-700 pt-6">
+						<div className="space-y-6">
+							<SlideHeader
+								eyebrow="The OS in Action"
+								title="From a New Sequence to a Key Insight in Hours."
+							/>
+							<SlideBody className="space-y-4 pt-4">
 								<div>
 									<div className="font-medium text-zinc-900">
 										1. The Task (Branching):
 									</div>
-									<p className="text-sm">
+									<p>
 										Anna branches off the Standard Binding Assay to test variant
 										AF45 in a safe, versioned space.
 									</p>
@@ -629,15 +700,13 @@ function RealWorldSlide() {
 									<div className="font-medium text-zinc-900">
 										2. Execution & Capture (AI-Native Ingest):
 									</div>
-									<p className="text-sm">
-										Uploads a .csv and a photo of handwritten notes.
-									</p>
+									<p>Uploads a .csv and a photo of handwritten notes.</p>
 								</div>
 								<div>
 									<div className="font-medium text-zinc-900">
 										3. The OS at Work:
 									</div>
-									<ul className="text-sm space-y-1 ml-4 list-disc">
+									<ul className="space-y-1 ml-4 list-disc">
 										<li>
 											<span className="font-medium">
 												AI-Powered Metadata Extraction:
@@ -656,7 +725,7 @@ function RealWorldSlide() {
 										</li>
 									</ul>
 								</div>
-							</div>
+							</SlideBody>
 						</div>
 					),
 				},
@@ -732,31 +801,31 @@ function FoundationPlanSlide() {
 					id: "left-content",
 					padded: true,
 					content: (
-						<div className="space-y-3">
-							<div className="text-xs font-medium uppercase tracking-wide text-stone-500">
-								Let's Build Your Foundation
-							</div>
-							<h3 className="text-xl font-semibold text-zinc-900">
-								Forward-Deployed Engineering, Embedded With Your Team
-							</h3>
-							<div className="space-y-4 pt-6 text-stone-700">
-								<p className="text-sm">
+						<div className="space-y-6">
+							<SlideHeader
+								eyebrow="Let's Build Your Foundation"
+								title="Forward-Deployed Engineering, Embedded With Your Team"
+							/>
+							<SlideBody className="space-y-4 pt-4">
+								<p>
 									We partner as forward-deployed engineers, sitting with your
 									scientists to ship value on day one. We co-own outcomes, not
-									handoffs—integrating protocols, instruments, and analysis directly
-									into your workflow.
+									handoffs—integrating protocols, instruments, and analysis
+									directly into your workflow.
 								</p>
-								<ul className="text-sm ml-4 list-disc space-y-1">
+								<ul className="ml-4 list-disc space-y-1">
 									<li>Embed alongside assay owners and ops leads</li>
-									<li>Translate scientific intent into robust, automated workflows</li>
+									<li>
+										Translate scientific intent into robust, automated workflows
+									</li>
 									<li>Tight loops: instrument data → OS events → decisions</li>
 									<li>Audit-ready by default; designed for scalability</li>
 								</ul>
-								<p className="text-sm">
-									This partnership model accelerates time-to-impact while building
-									the foundation your team will iterate on.
+								<p>
+									This partnership model accelerates time-to-impact while
+									building the foundation your team will iterate on.
 								</p>
-							</div>
+							</SlideBody>
 						</div>
 					),
 				},
@@ -775,62 +844,90 @@ function FoundationPlanSlide() {
 }
 
 function TeamSlide() {
-    return (
-        <GridSlide
-            className="bg-background"
-            gridClassName="grid-cols-2 auto-rows-fr"
-            gridInnerClassName="divide-foreground/10"
-            items={[
-                {
-                    id: 'left-content',
-                    padded: true,
-                    content: (
-                        <div className="space-y-3">
-                            <div className="text-xs font-medium uppercase tracking-wide text-stone-500">Why Us</div>
-                            <h3 className="text-xl font-semibold text-zinc-900">Built by a Team That Has Lived This Problem</h3>
-                            <ul className="space-y-3 text-stone-700 pt-6">
-                                <li>
-                                    Built AI-native data systems across biotech and research—bridging lab workflows,
-                                    knowledge graphs, and modern infra.
-                                </li>
-                                <li>
-                                    Hands-on with LLMs, structured data models, and instrument integrations—shipping
-                                    production systems end-to-end.
-                                </li>
-                                <li>
-                                    Backgrounds from Berkeley, Recursion Pharma, Cambridge University, the Francis Crick Institute,
-                                    and Flagship Pioneering.
-                                </li>
-                            </ul>
-                        </div>
-                    )
-                },
-                {
-                  id: 'right-logos',
-                  padded: true,
-                  content: (
-                      <div className="flex h-full items-center justify-center">
-                          <div className="w-full max-w-md">
-                            <LogoCloud logos={[{
-                              src: "/Recursion.png", alt: "Recursion Pharma", height: "32", className: "h-12"
-                            },{
-                              src: "/flagship.png", alt: "Flagship Pioneering", height: "32", className: "h-8 text-gray-500"
-                            },{
-                              src: "/Cambridge.png", alt: "Cambridge University", height: "12", className: "text-gray-500"
-                            },{
-                              src: "/crick.avif", alt: "Francis Crick Institute", className: "h-15 -mt-5 "
-                            }, {
-                              src: "/Berkeley.png", alt: "University of California, Berkeley", className: "h-5 text-gray-500"
-                            },{
-                              src: "/goldman.png", alt: "Goldman Sachs", className: "h-7 text-gray-500"
-                            }]} />
-                          </div>
-                      </div>
-                  )
-                }
-            ]}
-        />
-    )
+	return (
+		<GridSlide
+			className="bg-background"
+			gridClassName="grid-cols-2 auto-rows-fr"
+			gridInnerClassName="divide-foreground/10"
+			items={[
+				{
+					id: "left-content",
+					padded: true,
+					content: (
+						<div className="space-y-6">
+							<SlideHeader
+								eyebrow="Why Us"
+								title="Built by a Team That Has Lived This Problem"
+							/>
+							<SlideBody as="ul" className="space-y-3 pt-4">
+								<li>
+									Built AI-native data systems across biotech and
+									research—bridging lab workflows, knowledge graphs, and modern
+									infra.
+								</li>
+								<li>
+									Hands-on with LLMs, structured data models, and instrument
+									integrations—shipping production systems end-to-end.
+								</li>
+								<li>
+									Backgrounds from Berkeley, Recursion Pharma, Cambridge
+									University, the Francis Crick Institute, and Flagship
+									Pioneering.
+								</li>
+							</SlideBody>
+						</div>
+					),
+				},
+				{
+					id: "right-logos",
+					padded: true,
+					content: (
+						<div className="flex h-full items-center justify-center">
+							<div className="w-full max-w-md">
+								<LogoCloud
+									logos={[
+										{
+											src: "/Recursion.png",
+											alt: "Recursion Pharma",
+											height: "32",
+											className: "h-12",
+										},
+										{
+											src: "/flagship.png",
+											alt: "Flagship Pioneering",
+											height: "32",
+											className: "h-8 text-gray-500",
+										},
+										{
+											src: "/Cambridge.png",
+											alt: "Cambridge University",
+											height: "12",
+											className: "text-gray-500",
+										},
+										{
+											src: "/crick.avif",
+											alt: "Francis Crick Institute",
+											className: "h-15 -mt-5 ",
+										},
+										{
+											src: "/Berkeley.png",
+											alt: "University of California, Berkeley",
+											className: "h-5 text-gray-500",
+										},
+										{
+											src: "/goldman.png",
+											alt: "Goldman Sachs",
+											className: "h-7 text-gray-500",
+										},
+									]}
+								/>
+							</div>
+						</div>
+					),
+				},
+			]}
+		/>
+	);
 }
 
 function QASlide() {
@@ -850,18 +947,19 @@ function QASlide() {
 const slides = [
 	{ id: 1, content: <TitleSlide /> },
 	{ id: 2, content: <BiotechDilemmaSlide /> },
-	{ id: 3, content: <VisionSlide /> },
-	{ id: 4, content: <NewParadigmSlide /> },
-	{ id: 5, content: <PillarModularSlide /> },
-	{ id: 6, content: <PillarAiNativeSlide /> },
-	{ id: 7, content: <PillarBranchingSlide /> },
-	{ id: 8, content: <PillarEventDrivenSlide /> },
-	{ id: 9, content: <RealWorldSlide /> },
-	{ id: 10, content: <FlywheelSlide /> },
-	{ id: 11, content: <ValuationSlide /> },
-	{ id: 12, content: <FoundationPlanSlide /> },
-	{ id: 13, content: <TeamSlide /> },
-	{ id: 14, content: <QASlide /> },
+	{ id: 3, content: <WhatIfSlide /> },
+	{ id: 4, content: <VisionSlide /> },
+	{ id: 5, content: <NewParadigmSlide /> },
+	{ id: 6, content: <PillarModularSlide /> },
+	{ id: 7, content: <PillarAiNativeSlide /> },
+	{ id: 8, content: <PillarBranchingSlide /> },
+	{ id: 9, content: <PillarEventDrivenSlide /> },
+	{ id: 10, content: <RealWorldSlide /> },
+	{ id: 11, content: <FlywheelSlide /> },
+	{ id: 12, content: <ValuationSlide /> },
+	{ id: 13, content: <FoundationPlanSlide /> },
+	{ id: 14, content: <TeamSlide /> },
+	{ id: 15, content: <QASlide /> },
 ];
 
 export default function SalesDeck() {
