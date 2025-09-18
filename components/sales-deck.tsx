@@ -18,6 +18,7 @@ import { BranchingIllustration } from "@/components/branching-illustration";
 import LimsAiChatDemo from "@/components/ui/lims-ai-chat-demo";
 import { SequenceIllustration } from "@/components/sequence-illustration";
 import LogoCloud from "./logo-cloud";
+import { EventWorkflowIllustration } from "@/components/event-workflow-illustration";
  
 
 // --- Text-first Slide Components (smaller typography, black/stone palette) ---
@@ -32,7 +33,7 @@ function TitleSlide() {
 					<div className="h-8 w-20 rounded bg-stone-200/60" aria-hidden />
 				</div>
 				<h1 className="text-xl font-semibold leading-tight text-zinc-900">
-					The AI-native Lab Operating System
+					The AI-Native Lab Operating System
 				</h1>
 				<p className="text-sm text-stone-600 max-w-2xl mx-auto">
 					A New Foundation for [Client's Company Name]
@@ -216,7 +217,7 @@ function NewParadigmSlide() {
 	return (
 		<TextOnlySlide
 			className="bg-background"
-			title={<span>Modern Relay: The AI-native Lab Operating System</span>}
+			title={<span>Modern Relay: The AI-Native Lab Operating System</span>}
 		>
 			<ul className="space-y-3">
 				<li>A single source of truth that powers your entire R&D lifecycle.</li>
@@ -336,6 +337,80 @@ function PillarBranchingSlide() {
 					content: (
 						<div className="flex h-full items-center justify-center">
 							<BranchingIllustration className="max-w-[640px] w-full" />
+						</div>
+					),
+				},
+			]}
+		/>
+	);
+}
+
+function PillarEventDrivenSlide() {
+	return (
+		<GridSlide
+			className="bg-zinc-50"
+			gridClassName="grid-cols-2 auto-rows-fr"
+			gridInnerClassName="divide-foreground/10"
+			items={[
+				{
+					id: "left-content",
+					padded: true,
+					content: (
+						<div className="space-y-4">
+							<div className="text-xs font-medium uppercase tracking-wide text-stone-500">
+								Pillar 4 — Event-Driven Workflows
+							</div>
+							<h3 className="text-xl font-semibold text-zinc-900">
+								Your lab shouldn't just store data; it should act on it.
+							</h3>
+							<p className="pt-4 text-sm text-stone-700">
+								Our platform uses an event-driven architecture to automate the
+								Design-Build-Test-Learn cycle.
+							</p>
+							<div className="space-y-3 text-sm text-stone-700">
+								<div>
+									<p className="font-medium text-zinc-900">
+										When a new event happens...
+									</p>
+									<ul className="mt-1 list-disc space-y-0.5 pl-5 text-stone-600">
+										<li>A scientist uploads a new protein sequence...</li>
+										<li>A plate reader finishes an assay run...</li>
+										<li>An AI flags an anomalous result...</li>
+									</ul>
+								</div>
+								<div>
+									<p className="font-medium text-zinc-900">
+										...an automated workflow can trigger.
+									</p>
+									<ul className="mt-1 list-disc space-y-0.5 pl-5 text-stone-600">
+										<li>
+											...automatically order primers, run a structure
+											prediction, and log the results.
+										</li>
+										<li>
+											...automatically parse the raw data, perform QC, calculate
+											IC50 values, and update the experiment's status.
+										</li>
+										<li>
+											...automatically create a ticket for review and link it to
+											the relevant data.
+										</li>
+									</ul>
+								</div>
+							</div>
+							<p className="pt-4 text-sm text-stone-700">
+								This is your digital lab technician, working 24/7 to reduce
+								manual work and accelerate the pace of discovery.
+							</p>
+						</div>
+					),
+				},
+				{
+					id: "right-visual",
+					padded: true,
+					content: (
+						<div className="flex h-full items-center justify-center">
+							<EventWorkflowIllustration />
 						</div>
 					),
 				},
@@ -780,12 +855,13 @@ const slides = [
 	{ id: 5, content: <PillarModularSlide /> },
 	{ id: 6, content: <PillarAiNativeSlide /> },
 	{ id: 7, content: <PillarBranchingSlide /> },
-	{ id: 8, content: <RealWorldSlide /> },
-	{ id: 9, content: <FlywheelSlide /> },
-	{ id: 10, content: <ValuationSlide /> },
-	{ id: 11, content: <FoundationPlanSlide /> },
-	{ id: 12, content: <TeamSlide /> },
-	{ id: 13, content: <QASlide /> },
+	{ id: 8, content: <PillarEventDrivenSlide /> },
+	{ id: 9, content: <RealWorldSlide /> },
+	{ id: 10, content: <FlywheelSlide /> },
+	{ id: 11, content: <ValuationSlide /> },
+	{ id: 12, content: <FoundationPlanSlide /> },
+	{ id: 13, content: <TeamSlide /> },
+	{ id: 14, content: <QASlide /> },
 ];
 
 export default function SalesDeck() {

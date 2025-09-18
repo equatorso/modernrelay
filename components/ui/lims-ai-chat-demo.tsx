@@ -66,7 +66,7 @@ export default function LimsAiChatDemo({ className, bare = false, showUserMessag
       // Reset
       setVisibleSteps(0)
       // 1) User asks a high-value LIMS question
-      schedule(() => setVisibleSteps(1), 600)
+      schedule(() => setVisibleSteps(1), 300)
       // 2) AI typing indicator
       schedule(() => setVisibleSteps(2), 2000)
       // 3) AI first response chunk (analysis + IC50)
