@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
+import localFont from 'next/font/local';
 import "./globals.css";
+
+const optician = localFont({
+  src: '../public/fonts/Optician-Sans.otf',
+  variable: '--font-optician',
+})
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${geistMono.variable} ${geistSans.variable} antialiased`}
+        className={`${inter.variable} ${geistMono.variable} ${geistSans.variable} ${optician.variable} antialiased`}
       >
         {children}
       </body>

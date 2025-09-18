@@ -22,6 +22,7 @@ import { TextOnlySlide } from "@/components/slides/text-only-slide";
 import { Button } from "@/components/ui/button";
 import LaunchAiChatDemo from "@/components/ui/launch-ai-chat-demo";
 import LimsAiChatDemo from "@/components/ui/lims-ai-chat-demo";
+import { VaultIllustration } from "@/components/vault-illustration";
 import { cn } from "@/lib/utils";
 
 // Story-driven, under-5-min deck for biopharma launch excellence
@@ -34,7 +35,7 @@ function TitleSlide() {
 					<Logo className="h-8 w-auto" />
 				</div>
 				<h1 className="text-xl font-semibold leading-tight text-zinc-900">
-					EQTR Launch: The Harvey for Biopharma
+					Agentic AI for Modern Drug Launches
 				</h1>
 				<p className="text-sm text-stone-600 max-w-2xl mx-auto">
 					A unified intelligence layer for launch excellence.
@@ -250,25 +251,8 @@ function VaultSlide() {
 					id: "right-visual",
 					padded: true,
 					content: (
-						<div className="grid grid-cols-2 gap-2">
-							<div className="rounded-md border border-stone-200 bg-white/70 p-3 text-[12px]">
-								<strong>Brand Plan v3</strong>
-								<p className="text-stone-600">Versioned • Linked to evidence</p>
-							</div>
-							<div className="rounded-md border border-stone-200 bg-white/70 p-3 text-[12px]">
-								<strong>AMCP Dossier</strong>
-								<p className="text-stone-600">
-									Country variants auto‑generated
-								</p>
-							</div>
-							<div className="rounded-md border border-stone-200 bg-white/70 p-3 text-[12px]">
-								<strong>Safety Labeling</strong>
-								<p className="text-stone-600">Compliance checks passed</p>
-							</div>
-							<div className="rounded-md border border-stone-200 bg-white/70 p-3 text-[12px]">
-								<strong>Veeva Sync</strong>
-								<p className="text-stone-600">Two‑way metadata mapping</p>
-							</div>
+						<div className="flex h-full items-center justify-center">
+							<VaultIllustration className="max-w-md w-full" />
 						</div>
 					),
 				},

@@ -11,7 +11,7 @@ export const Logo = ({ className, uniColor }: { className?: string; uniColor?: b
                 height={48}
                 className="h-12 w-12 object-contain"
             />
-            <span className="text-foreground font-medium text-lg">Modern Relay</span>
+            <span className="text-foreground text-2xl font-optician">EQTR</span>
         </div>
     )
 }
