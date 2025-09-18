@@ -1,0 +1,170 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+app/
+  globals.css
+  layout.tsx
+  page.tsx
+components/
+  logos/
+    beacon.tsx
+    claude.tsx
+    Gemini.tsx
+    GooglePaLM.tsx
+    hulu.tsx
+    index.ts
+    intellij.tsx
+    linear.tsx
+    MagicUI.tsx
+    MediaWiki.tsx
+    open-ai.tsx
+    Replit.tsx
+    spotify.tsx
+    supabase.tsx
+    vercel.tsx
+    vs-code.tsx
+    VSCodium.tsx
+    windsurf.tsx
+  slides/
+    decorated-panel.tsx
+    grid-slide.tsx
+    slide-components.tsx
+    slide-frame.tsx
+    text-only-slide.tsx
+  team/
+    why-us.tsx
+  ui/
+    accordion.tsx
+    ai-prompt-box.tsx
+    avatar.tsx
+    box-panel.tsx
+    button.tsx
+    card.tsx
+    chart.tsx
+    context-menu.tsx
+    gantt.tsx
+    infinite-slider.tsx
+    lims-ai-chat-demo.tsx
+    navigation-menu.tsx
+    plus-decorator.tsx
+    text-shimmer.tsx
+    tooltip.tsx
+  bento-10.tsx
+  bento-14.tsx
+  bento-8.tsx
+  branching-illustration.tsx
+  brand-logos-grid.tsx
+  campaign-illustration.tsx
+  chart-illustration.tsx
+  code-block-illustration.tsx
+  code-block.tsx
+  code-demo-4.tsx
+  comparator-5.tsx
+  const.ts
+  content-3.tsx
+  currency-illustration.tsx
+  document-illustration.tsx
+  dropdown-illustration.tsx
+  event-workflow-illustration.tsx
+  features-1.tsx
+  features-10.tsx
+  features-11.tsx
+  features-12.tsx
+  features-13.tsx
+  features-14.tsx
+  features-2.tsx
+  features-3.tsx
+  features-4.tsx
+  features-5.tsx
+  features-6.tsx
+  features-7.tsx
+  features-9.tsx
+  finger-print-illustration.tsx
+  gantt-chart-illustration.tsx
+  gantt-chart.tsx
+  header.tsx
+  hero-section.tsx
+  how-it-works-2.tsx
+  how-it-works-3.tsx
+  how-it-works-6.tsx
+  how-it-works-7.tsx
+  integrations-6.tsx
+  integrations-9.tsx
+  integrations-illustration.tsx
+  invoice-illustration.tsx
+  kit-illustration.tsx
+  layout-illustration.tsx
+  logo-cloud.tsx
+  logo.tsx
+  map-illustration.tsx
+  map.tsx
+  memory-usage-illustration.tsx
+  message-illustration.tsx
+  poll-illustration.tsx
+  sales-deck.tsx
+  sequence-illustration.tsx
+  slide-deck.tsx
+  table-illustration.tsx
+  table.tsx
+  uptime-illustration.tsx
+  visualization-illustration.tsx
+hooks/
+  use-media.ts
+lib/
+  utils.ts
+public/
+  berkeley.svg
+  file.svg
+  globe.svg
+  next.svg
+  Recursion.svg
+  vercel.svg
+  window.svg
+.gitignore
+components.json
+eslint.config.mjs
+next.config.ts
+package.json
+postcss.config.mjs
+README.md
+tsconfig.json
+</directory_structure>
