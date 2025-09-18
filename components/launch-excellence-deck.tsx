@@ -20,6 +20,7 @@ import { SlideBody, SlideHeader } from "@/components/slides/slide-components";
 import { SlideFrame } from "@/components/slides/slide-frame";
 import { TextOnlySlide } from "@/components/slides/text-only-slide";
 import { Button } from "@/components/ui/button";
+import LaunchAiChatDemo from "@/components/ui/launch-ai-chat-demo";
 import LimsAiChatDemo from "@/components/ui/lims-ai-chat-demo";
 import { cn } from "@/lib/utils";
 
@@ -201,7 +202,7 @@ function AssistantSlide() {
 					padded: false,
 					content: (
 						<div className="h-full">
-							<LimsAiChatDemo
+							<LaunchAiChatDemo
 								bare
 								showUserMessage
 								showPrompt
@@ -310,17 +311,21 @@ function KnowledgeSlide() {
 					id: "right-visual",
 					padded: true,
 					content: (
-						<div className="rounded-md border border-stone-200 bg-white/70 p-4">
-							<div className="text-[12px] font-medium text-stone-800">
-								Unified Knowledge Graph
-							</div>
-							<div className="mt-2 grid grid-cols-3 gap-2 text-[11px] text-stone-700">
-								<div className="rounded border p-2">FDA</div>
-								<div className="rounded border p-2">PubMed</div>
-								<div className="rounded border p-2">HTA</div>
-								<div className="rounded border p-2">Payer</div>
-								<div className="rounded border p-2">Competitors</div>
-								<div className="rounded border p-2">Internal</div>
+						<div className="flex items-center justify-center h-full">
+							<div className="rounded-md border border-stone-200 bg-white/70 p-4">
+								<div className="text-[12px] font-medium text-stone-800 text-center">
+									Unified Knowledge Graph
+								</div>
+								<div className="mt-2 grid grid-cols-3 gap-2 text-[11px] text-stone-700">
+									<div className="rounded border p-2 text-center">FDA</div>
+									<div className="rounded border p-2 text-center">PubMed</div>
+									<div className="rounded border p-2 text-center">HTA</div>
+									<div className="rounded border p-2 text-center">Payer</div>
+									<div className="rounded border p-2 text-center">
+										Competitors
+									</div>
+									<div className="rounded border p-2 text-center">Internal</div>
+								</div>
 							</div>
 						</div>
 					),
