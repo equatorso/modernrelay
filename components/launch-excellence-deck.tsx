@@ -24,6 +24,7 @@ import LaunchAiChatDemo from "@/components/ui/launch-ai-chat-demo";
 import LimsAiChatDemo from "@/components/ui/lims-ai-chat-demo";
 import { VaultIllustration } from "@/components/vault-illustration";
 import { cn } from "@/lib/utils";
+import { RecurringWorkflowIllustration } from "@/components/recurring-workflow-illustration";
 
 // Story-driven, under-5-min deck for biopharma launch excellence
 
@@ -32,7 +33,7 @@ function TitleSlide() {
 		<SlideFrame className="bg-background">
 			<div className="space-y-5 text-center">
 				<div className="flex items-center justify-center gap-6">
-					<Logo className="h-8 w-auto" />
+					<Logo className="h-fit w-auto" />
 				</div>
 				<h1 className="text-xl font-semibold leading-tight text-zinc-900">
 					Agentic AI for Modern Drug Launches
@@ -83,38 +84,40 @@ function FractureSlide() {
 	);
 
 	const right = (
-		<div className="grid grid-cols-2 gap-2">
-			<div className="rounded-md border border-stone-200/70 bg-white p-3">
-				<div className="flex items-center gap-2 text-[12px] font-medium text-stone-800">
-					<ShieldCheck className="size-3.5 text-stone-500" /> Regulatory
+		<div className="flex h-full items-center justify-center">
+			<div className="grid grid-cols-2 gap-2 max-w-sm">
+				<div className="rounded-md border border-stone-200/70 bg-white p-3">
+					<div className="flex items-center gap-2 text-[12px] font-medium text-stone-800">
+						<ShieldCheck className="size-3.5 text-stone-500" /> Regulatory
+					</div>
+					<p className="mt-1 text-[12px] text-stone-600">
+						Guidance, labels, safety updates
+					</p>
 				</div>
-				<p className="mt-1 text-[12px] text-stone-600">
-					Guidance, labels, safety updates
-				</p>
-			</div>
-			<div className="rounded-md border border-stone-200/70 bg-white p-3">
-				<div className="flex items-center gap-2 text-[12px] font-medium text-stone-800">
-					<Target className="size-3.5 text-stone-500" /> Payer
+				<div className="rounded-md border border-stone-200/70 bg-white p-3">
+					<div className="flex items-center gap-2 text-[12px] font-medium text-stone-800">
+						<Target className="size-3.5 text-stone-500" /> Payer
+					</div>
+					<p className="mt-1 text-[12px] text-stone-600">
+						Coverage criteria, objections
+					</p>
 				</div>
-				<p className="mt-1 text-[12px] text-stone-600">
-					Coverage criteria, objections
-				</p>
-			</div>
-			<div className="rounded-md border border-stone-200/70 bg-white p-3">
-				<div className="flex items-center gap-2 text-[12px] font-medium text-stone-800">
-					<Globe2 className="size-3.5 text-stone-500" /> Competitive
+				<div className="rounded-md border border-stone-200/70 bg-white p-3">
+					<div className="flex items-center gap-2 text-[12px] font-medium text-stone-800">
+						<Globe2 className="size-3.5 text-stone-500" /> Competitive
+					</div>
+					<p className="mt-1 text-[12px] text-stone-600">
+						Trials, launches, positioning
+					</p>
 				</div>
-				<p className="mt-1 text-[12px] text-stone-600">
-					Trials, launches, positioning
-				</p>
-			</div>
-			<div className="rounded-md border border-stone-200/70 bg-white p-3">
-				<div className="flex items-center gap-2 text-[12px] font-medium text-stone-800">
-					<FolderGit2 className="size-3.5 text-stone-500" /> Clinical
+				<div className="rounded-md border border-stone-200/70 bg-white p-3">
+					<div className="flex items-center gap-2 text-[12px] font-medium text-stone-800">
+						<FolderGit2 className="size-3.5 text-stone-500" /> Clinical
+					</div>
+					<p className="mt-1 text-[12px] text-stone-600">
+						Protocols, endpoints, evidence
+					</p>
 				</div>
-				<p className="mt-1 text-[12px] text-stone-600">
-					Protocols, endpoints, evidence
-				</p>
 			</div>
 		</div>
 	);
@@ -137,9 +140,8 @@ function PromiseSlide() {
 		<TextOnlySlide
 			className="bg-zinc-50"
 			align="center"
-			title={<span>What if every team saw the same, current truth?</span>}
+			title={<span>What if fragmented signals became coordinated decisions and actions?</span>}
 		>
-			<p>And could act on it instantly—together.</p>
 		</TextOnlySlide>
 	);
 }
@@ -412,14 +414,10 @@ function WorkflowsSlide() {
 					id: "right-visual",
 					padded: true,
 					content: (
-						<div className="rounded-md border border-stone-200 bg-white/70 p-4 text-[12px]">
-							<div className="font-medium text-stone-800">Example workflow</div>
-							<ol className="mt-2 list-decimal ml-4 space-y-1 text-stone-700">
-								<li>Detect new competitor data in HTA feed</li>
-								<li>Summarize changes and assess impact on payer stance</li>
-								<li>Draft counter‑objection language with citations</li>
-								<li>Open tasks in CRM for field review</li>
-							</ol>
+						<div className="h-full flex items-center justify-center">
+							<div className="w-full max-w-sm">
+								<RecurringWorkflowIllustration />
+							</div>
 						</div>
 					),
 				},
@@ -444,19 +442,20 @@ function DayInTheLifeSlide() {
 		</TextOnlySlide>
 	);
 }
-
 function OutcomeSlide() {
 	return (
 		<TextOnlySlide
 			className="bg-background"
-			eyebrow="What this means"
-			title={<span>Faster alignment. Fewer surprises. Stronger launch.</span>}
+			title="Questions for you"
 		>
-			<ul className="space-y-2">
-				<li>Shared situational awareness across functions</li>
-				<li>Decisions made with current, cited evidence</li>
-				<li>Repeatable operating rhythm powered by agents</li>
-			</ul>
+			<div className="space-y-4">
+				<p className="text-stone-700">
+					In your experience, how valuable is an ad board of C-level execs in driving enterprise sales?
+				</p>
+				<p className="text-stone-700">
+					<span>When in the sales process does it make sense to rope in IT?</span>
+				</p>
+			</div>
 		</TextOnlySlide>
 	);
 }
@@ -484,8 +483,8 @@ const slides = [
 	{ id: 6, content: <AssistantSlide /> },
 	{ id: 7, content: <VaultSlide /> },
 	{ id: 8, content: <KnowledgeSlide /> },
-	{ id: 9, content: <GovernedBranchingSlide /> },
-	{ id: 10, content: <WorkflowsSlide /> },
+	{ id: 9, content: <WorkflowsSlide /> },
+	{ id: 10, content: <GovernedBranchingSlide /> },
 	{ id: 11, content: <DayInTheLifeSlide /> },
 	{ id: 12, content: <OutcomeSlide /> },
 	{ id: 13, content: <CTAFinalSlide /> },
