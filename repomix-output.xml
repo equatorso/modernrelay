@@ -83,6 +83,7 @@ components/
     context-menu.tsx
     gantt.tsx
     infinite-slider.tsx
+    launch-ai-chat-demo.tsx
     lims-ai-chat-demo.tsx
     navigation-menu.tsx
     plus-decorator.tsx
@@ -132,6 +133,7 @@ components/
   integrations-illustration.tsx
   invoice-illustration.tsx
   kit-illustration.tsx
+  launch-excellence-deck.tsx
   layout-illustration.tsx
   logo-cloud.tsx
   logo.tsx
@@ -146,6 +148,7 @@ components/
   table-illustration.tsx
   table.tsx
   uptime-illustration.tsx
+  vault-illustration.tsx
   visualization-illustration.tsx
 hooks/
   use-media.ts

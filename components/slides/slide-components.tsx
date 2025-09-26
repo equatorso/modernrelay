@@ -13,7 +13,7 @@ export const SlideHeader = ({
 }) => (
 	<div className={cn("space-y-3", className)}>
 		{eyebrow && (
-			<div className="text-xs font-medium uppercase tracking-wide text-stone-500">
+			<div className="text-xs font-medium uppercase tracking-wide text-stone-600">
 				{eyebrow}
 			</div>
 		)}

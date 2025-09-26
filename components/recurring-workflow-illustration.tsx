@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Bell, ClipboardCheck, FileText, PenTool } from "lucide-react";
 import { motion } from "motion/react";
-import { Bell, FileText, PenTool, ClipboardCheck } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const steps = [
 	{
@@ -38,7 +38,10 @@ export const RecurringWorkflowIllustration = () => {
 	}, []);
 
 	return (
-		<div aria-hidden className="relative w-full select-none flex justify-center items-center h-full">
+		<div
+			aria-hidden
+			className="relative w-full select-none flex justify-center items-center h-full"
+		>
 			<div className="relative w-full max-w-sm space-y-8 py-4">
 				<div className="absolute top-4 bottom-4 left-[1.125rem] w-px bg-stone-200/80" />
 
@@ -47,7 +50,8 @@ export const RecurringWorkflowIllustration = () => {
 						<motion.div
 							className="z-10 flex size-9 items-center justify-center rounded-full"
 							animate={{
-								backgroundColor: index === currentStep ? "rgba(16, 185, 129, 0.1)" : "#f5f5f4",
+								backgroundColor:
+									index === currentStep ? "rgba(16, 185, 129, 0.1)" : "#f5f5f4",
 								scale: index === currentStep ? 1.05 : 1,
 							}}
 							transition={{ duration: 0.4, ease: "easeOut" }}
@@ -55,7 +59,8 @@ export const RecurringWorkflowIllustration = () => {
 							<motion.div
 								className="flex size-7 items-center justify-center rounded-full text-stone-600"
 								animate={{
-									backgroundColor: index === currentStep ? "rgb(16, 185, 129)" : "#ffffff",
+									backgroundColor:
+										index === currentStep ? "rgb(16, 185, 129)" : "#ffffff",
 									color: index === currentStep ? "#ffffff" : "#57534e",
 								}}
 								transition={{ duration: 0.4, ease: "easeOut" }}
@@ -68,7 +73,9 @@ export const RecurringWorkflowIllustration = () => {
 							transition={{ duration: 0.4, ease: "easeOut" }}
 							className="flex-1"
 						>
-							<div className="font-medium text-sm text-zinc-900">{step.title}</div>
+							<div className="font-medium text-sm text-zinc-900">
+								{step.title}
+							</div>
 							<div className="text-xs text-stone-600">{step.description}</div>
 						</motion.div>
 					</div>
@@ -77,5 +84,3 @@ export const RecurringWorkflowIllustration = () => {
 		</div>
 	);
 };
-
-

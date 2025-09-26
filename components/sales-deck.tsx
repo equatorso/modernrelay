@@ -25,8 +25,10 @@ import { SlideFrame } from "@/components/slides/slide-frame";
 import { TextOnlySlide } from "@/components/slides/text-only-slide";
 import { Button } from "@/components/ui/button";
 import LimsAiChatDemo from "@/components/ui/lims-ai-chat-demo";
+import NoteToMetadataDemo from "@/components/ui/note-to-metadata-demo";
 import { cn } from "@/lib/utils";
 import LogoCloud from "./logo-cloud";
+import PythonSdkIllustration from "./python-sdk-illustration";
 
 // --- Text-first Slide Components (smaller typography, black/stone palette) ---
 
@@ -53,137 +55,138 @@ function TitleSlide() {
 // Slide 2 — Biotech Dilemma with diverging paths illustration
 function BiotechDilemmaSlide() {
 	const left = (
-		<div className="space-y-6">
+		<div className="flex flex-col h-full">
 			<SlideHeader
 				eyebrow="The Biotech Dilemma"
 				title="The Seeds of Future Failure Are Sown on Day One"
 			/>
-			<SlideBody className="space-y-3">
-				<p>
-					You've raised your first few million. Your team is brilliant. Your
-					science is promising. On Day Zero, a hidden choice determines your
-					trajectory:
-				</p>
-				<p>
-					Your valuation ultimately follows the quality and integrity of your
-					data. Start with a system designed for that reality.
-				</p>
-			</SlideBody>
+			<div className="flex-1 flex items-end pt-10">
+				<div className="w-full">
+					<div className="rounded-md border border-stone-200/60 bg-white p-3">
+						<div className="text-[12px] font-medium text-stone-800">
+							Path A — The Path of Least Resistance
+						</div>
+						<div className="mt-2 overflow-hidden rounded border border-stone-200/60 bg-white/60">
+							<div className="bg-stone-50/70 px-2 py-1 text-[10px] font-mono text-stone-500">
+								files
+							</div>
+							<ul className="divide-y divide-stone-200/60">
+								<li className="flex items-center gap-2 px-2 py-1.5">
+									<FileText className="size-3.5 text-stone-500" />
+									<span className="truncate text-[12px] font-mono text-stone-700">
+										final_final_v2(1).xlsx
+									</span>
+									<AlertTriangle className="ml-auto size-3.5 text-amber-600" />
+								</li>
+								<li className="flex items-center gap-2 px-2 py-1.5">
+									<FileText className="size-3.5 text-stone-500" />
+									<span className="truncate text-[12px] font-mono text-stone-700">
+										image (copy).png
+									</span>
+									<Link2Off className="ml-auto size-3.5 text-stone-400" />
+								</li>
+								<li className="flex items-center gap-2 px-2 py-1.5">
+									<Folder className="size-3.5 text-stone-500" />
+									<span className="truncate text-[12px] font-mono text-stone-700">
+										results_old/
+									</span>
+									<AlertTriangle className="ml-auto size-3.5 text-amber-600" />
+								</li>
+								<li className="flex items-center gap-2 px-2 py-1.5">
+									<FileText className="size-3.5 text-stone-500" />
+									<span className="truncate text-[12px] font-mono text-stone-700">
+										protocol_binding_assay_new_NEW (1) (2).pptx
+									</span>
+									<AlertTriangle className="ml-auto size-3.5 text-amber-600" />
+								</li>
+								<li className="flex items-center gap-2 px-2 py-1.5">
+									<FileText className="size-3.5 text-stone-500" />
+									<span className="truncate text-[12px] font-mono text-stone-700">
+										notes - Anna (old).docx
+									</span>
+									<Link2Off className="ml-auto size-3.5 text-stone-400" />
+								</li>
+							</ul>
+						</div>
+						<ul className="mt-2 list-disc pl-4 text-sm space-y-1">
+							<li>Spreadsheets, slides, shared drives, generic notebooks.</li>
+							<li>Creates Data Debt. Each experiment adds to the chaos.</li>
+							<li>
+								6 months: hard to reproduce. 12 months: diligence becomes
+								archaeology.
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 
 	const right = (
-		<div className="flex h-full items-center justify-center">
-			<div className="w-full max-w-md space-y-3">
-				<div className="rounded-md border border-stone-200/60 bg-white p-3">
-					<div className="text-[12px] font-medium text-stone-800">
-						Path A — The Path of Least Resistance
-					</div>
-					<div className="mt-2 overflow-hidden rounded border border-stone-200/60 bg-white/60">
-						<div className="bg-stone-50/70 px-2 py-1 text-[10px] font-mono text-stone-500">
-							files
+		<div className="flex flex-col h-full">
+			<div className="flex-1 flex items-end">
+				<div className="w-full">
+					<div className="rounded-md border border-emerald-200/60 bg-emerald-50 p-3">
+						<div className="text-[12px] font-medium text-emerald-800">
+							Path B — The Path of Intentional Design
 						</div>
-						<ul className="divide-y divide-stone-200/60">
-							<li className="flex items-center gap-2 px-2 py-1.5">
-								<FileText className="size-3.5 text-stone-500" />
-								<span className="truncate text-[12px] font-mono text-stone-700">
-									final_final_v2(1).xlsx
-								</span>
-								<AlertTriangle className="ml-auto size-3.5 text-amber-600" />
+						<div className="mt-2 overflow-hidden rounded border border-stone-200/60 bg-white/90 ring-1 ring-foreground/10">
+							<div className="bg-foreground/5 px-2 py-1 text-[10px] font-mono text-stone-700">
+								records
+							</div>
+							<table className="w-full text-[12px]">
+								<thead className="bg-foreground/[0.04]">
+									<tr className="*:px-2 *:py-1 *:text-left *:font-medium *:text-stone-800">
+										<th>Record</th>
+										<th>Type</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody className="divide-y divide-stone-200/60">
+									<tr className="*:px-2 *:py-1">
+										<td className="font-mono text-stone-800">
+											Binding Assay · AF45
+										</td>
+										<td className="text-stone-600">Assay</td>
+										<td>
+											<span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-1.5 py-0.5 text-[11px] font-medium text-emerald-700 ring-1 ring-emerald-500/20">
+												<CheckCircle className="size-3" /> validated
+											</span>
+										</td>
+									</tr>
+									<tr className="*:px-2 *:py-1">
+										<td className="font-mono text-stone-800">
+											Compound · BX12
+										</td>
+										<td className="text-stone-600">Compound</td>
+										<td>
+											<span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-1.5 py-0.5 text-[11px] font-medium text-emerald-700 ring-1 ring-emerald-500/20">
+												<CheckCircle className="size-3" /> validated
+											</span>
+										</td>
+									</tr>
+									<tr className="*:px-2 *:py-1">
+										<td className="font-mono text-stone-800">
+											Protocol · v1.3
+										</td>
+										<td className="text-stone-600">Protocol</td>
+										<td>
+											<span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-1.5 py-0.5 text-[11px] font-medium text-emerald-700 ring-1 ring-emerald-500/20">
+												<CheckCircle className="size-3" /> validated
+											</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<ul className="mt-2 list-disc pl-4 text-sm space-y-1 pt-10">
+							<li>
+								Build a foundation where data becomes a compounding asset.
 							</li>
-							<li className="flex items-center gap-2 px-2 py-1.5">
-								<FileText className="size-3.5 text-stone-500" />
-								<span className="truncate text-[12px] font-mono text-stone-700">
-									image (copy).png
-								</span>
-								<Link2Off className="ml-auto size-3.5 text-stone-400" />
-							</li>
-							<li className="flex items-center gap-2 px-2 py-1.5">
-								<Folder className="size-3.5 text-stone-500" />
-								<span className="truncate text-[12px] font-mono text-stone-700">
-									results_old/
-								</span>
-								<AlertTriangle className="ml-auto size-3.5 text-amber-600" />
-							</li>
-							<li className="flex items-center gap-2 px-2 py-1.5">
-								<FileText className="size-3.5 text-stone-500" />
-								<span className="truncate text-[12px] font-mono text-stone-700">
-									protocol_binding_assay_new_NEW (1) (2).pptx
-								</span>
-								<AlertTriangle className="ml-auto size-3.5 text-amber-600" />
-							</li>
-							<li className="flex items-center gap-2 px-2 py-1.5">
-								<FileText className="size-3.5 text-stone-500" />
-								<span className="truncate text-[12px] font-mono text-stone-700">
-									notes - Anna (old).docx
-								</span>
-								<Link2Off className="ml-auto size-3.5 text-stone-400" />
-							</li>
+							<li>Every experiment increases structure, context, and value.</li>
+							<li>Clean, reproducible, diligence‑ready from day zero.</li>
 						</ul>
 					</div>
-					<ul className="mt-2 list-disc pl-4 text-sm space-y-1">
-						<li>Spreadsheets, slides, shared drives, generic notebooks.</li>
-						<li>Creates Data Debt. Each experiment adds to the chaos.</li>
-						<li>
-							6 months: hard to reproduce. 12 months: diligence becomes
-							archaeology.
-						</li>
-					</ul>
-				</div>
-				<div className="rounded-md border border-emerald-200/60 bg-emerald-50 p-3">
-					<div className="text-[12px] font-medium text-emerald-800">
-						Path B — The Path of Intentional Design
-					</div>
-					<div className="mt-2 overflow-hidden rounded border border-stone-200/60 bg-white/90 ring-1 ring-foreground/10">
-						<div className="bg-foreground/5 px-2 py-1 text-[10px] font-mono text-stone-700">
-							records
-						</div>
-						<table className="w-full text-[12px]">
-							<thead className="bg-foreground/[0.04]">
-								<tr className="*:px-2 *:py-1 *:text-left *:font-medium *:text-stone-800">
-									<th>Record</th>
-									<th>Type</th>
-									<th>Status</th>
-								</tr>
-							</thead>
-							<tbody className="divide-y divide-stone-200/60">
-								<tr className="*:px-2 *:py-1">
-									<td className="font-mono text-stone-800">
-										Binding Assay · AF45
-									</td>
-									<td className="text-stone-600">Assay</td>
-									<td>
-										<span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-1.5 py-0.5 text-[11px] font-medium text-emerald-700 ring-1 ring-emerald-500/20">
-											<CheckCircle className="size-3" /> validated
-										</span>
-									</td>
-								</tr>
-								<tr className="*:px-2 *:py-1">
-									<td className="font-mono text-stone-800">Compound · BX12</td>
-									<td className="text-stone-600">Compound</td>
-									<td>
-										<span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-1.5 py-0.5 text-[11px] font-medium text-emerald-700 ring-1 ring-emerald-500/20">
-											<CheckCircle className="size-3" /> validated
-										</span>
-									</td>
-								</tr>
-								<tr className="*:px-2 *:py-1">
-									<td className="font-mono text-stone-800">Protocol · v1.3</td>
-									<td className="text-stone-600">Protocol</td>
-									<td>
-										<span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-1.5 py-0.5 text-[11px] font-medium text-emerald-700 ring-1 ring-emerald-500/20">
-											<CheckCircle className="size-3" /> validated
-										</span>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<ul className="mt-2 list-disc pl-4 text-sm space-y-1">
-						<li>Build a foundation where data becomes a compounding asset.</li>
-						<li>Every experiment increases structure, context, and value.</li>
-						<li>Clean, reproducible, diligence‑ready from day zero.</li>
-					</ul>
 				</div>
 			</div>
 		</div>
@@ -230,55 +233,48 @@ function VisionSlide() {
 					id: "left-content",
 					padded: true,
 					content: (
-						<div className="space-y-6">
-							<SlideHeader
-								eyebrow="The Vision"
-								title="A New Standard for R&D: Velocity and Integrity by Design"
-							/>
-							<SlideBody className="space-y-3 text-stone-500">
-								<li>
-									<span className="font-medium text-zinc-900">
-										Your scientists are freed from manual data entry.
-									</span>{" "}
-									The system observes protocols, files, and notes; context is
-									captured automatically.
-								</li>
-								<li>
-									<span className="font-medium text-zinc-900">
-										Everything is linked to its origin.
-									</span>{" "}
-									Trace any result to assay, batch, sequence, and the notebook
-									entry that spawned it.
-								</li>
-								<li>
-									<span className="font-medium text-zinc-900">
-										Your history becomes a queryable brain.
-									</span>{" "}
-									Ask: “Show experiments with protein X vs cell line Y with
-									&gt;20% viability drop. Generate dose–response curves and
-									compare to last quarter.”
-								</li>
-								<li>
-									{" "}
-									<span className="font-medium text-zinc-900">
-										The lab becomes an automated engine for discovery.
-									</span>{" "}
-									A new gene sequence automatically triggers structure
-									prediction and primer design.
-								</li>
-							</SlideBody>
-						</div>
+						<SlideHeader
+							eyebrow="The Vision"
+							title="A New Standard for R&D: Velocity and Integrity by Design"
+						/>
 					),
 				},
 				{
 					id: "right-visual",
 					padded: true,
 					content: (
-						<div className="flex h-full items-center justify-center">
-							<div className="w-full max-w-lg">
-								<div className="h-48 w-full rounded-xl border border-stone-200 bg-white/70" />
-							</div>
-						</div>
+						<SlideBody as="ul" className="space-y-3 text-stone-500">
+							<li>
+								<span className="font-medium text-zinc-900">
+									Your scientists are freed from manual data entry.
+								</span>{" "}
+								The system observes protocols, files, and notes; context is
+								captured automatically.
+							</li>
+							<li>
+								<span className="font-medium text-zinc-900">
+									Everything is linked to its origin.
+								</span>{" "}
+								Trace any result to assay, batch, sequence, and the notebook
+								entry that spawned it.
+							</li>
+							<li>
+								<span className="font-medium text-zinc-900">
+									Your history becomes a queryable brain.
+								</span>{" "}
+								Ask: “Show experiments with protein X vs cell line Y with
+								&gt;20% viability drop. Generate dose–response curves and
+								compare to last quarter.”
+							</li>
+							<li>
+								{" "}
+								<span className="font-medium text-zinc-900">
+									The lab becomes an automated engine for discovery.
+								</span>{" "}
+								A new gene sequence automatically triggers structure prediction
+								and primer design.
+							</li>
+						</SlideBody>
 					),
 				},
 			]}
@@ -290,7 +286,7 @@ function NewParadigmSlide() {
 	return (
 		<TextOnlySlide
 			className="bg-background"
-			title={<span>Modern Relay: The AI-Native Lab Operating System</span>}
+			title={<span>Introducing: The AI-Native Lab Operating System</span>}
 		>
 			<ul className="space-y-3">
 				<li>A single source of truth that powers your entire R&D lifecycle.</li>
@@ -351,6 +347,66 @@ function PillarAiNativeSlide() {
 								repeat={false}
 								className="w-full h-full rounded-none"
 							/>
+						</div>
+					),
+				},
+			]}
+		/>
+	);
+}
+
+function PillarIngestSlide() {
+	return (
+		<GridSlide
+			className="bg-background"
+			gridClassName="grid-cols-2 auto-rows-fr h-[72vh]"
+			gridInnerClassName="divide-foreground/10"
+			items={[
+				{
+					id: "left-content",
+					padded: true,
+					content: (
+						<div className="space-y-6">
+							<SlideHeader
+								eyebrow="Pillar 2a — AI-Native Ingest"
+								title="Notes Become Structured Metadata Automatically."
+							/>
+							<SlideBody as="ul" className="space-y-3 pt-4">
+								<li>
+									Scientists capture intent in natural language; the OS extracts
+									entities, timestamps, and provenance automatically.
+								</li>
+								<li>
+									Structured records sync to the Golden Record with confidence
+									scores and complete audit trails.
+								</li>
+								<li>
+									No re-keying. Data is diligence-ready the moment it's written.
+								</li>
+							</SlideBody>
+							<div className="rounded-lg border border-foreground/10 bg-white/70 p-4 text-[12px] text-stone-600">
+								<div className="font-mono text-xs uppercase tracking-wide text-stone-500">
+									Why it matters
+								</div>
+								<ul className="mt-2 list-disc space-y-1 pl-4">
+									<li>Zero-copy ingestion safeguards integrity.</li>
+									<li>
+										Audit-ready records satisfy 21 CFR Part 11 and partners.
+									</li>
+									<li>
+										LLMs have structured context to automate downstream actions.
+									</li>
+								</ul>
+							</div>
+						</div>
+					),
+				},
+				{
+					id: "right-demo",
+					padded: true,
+					content: (
+						<div className="h-full">
+							<NoteToMetadataDemo className="h-full" />
 						</div>
 					),
 				},
@@ -482,6 +538,57 @@ function PillarEventDrivenSlide() {
 					content: (
 						<div className="flex h-full items-center justify-center">
 							<EventWorkflowIllustration />
+						</div>
+					),
+				},
+			]}
+		/>
+	);
+}
+
+function PillarApiSlide() {
+	return (
+		<GridSlide
+			className="bg-background"
+			gridClassName="grid-cols-2 auto-rows-fr"
+			gridInnerClassName="divide-foreground/10"
+			items={[
+				{
+					id: "left-content",
+					padded: true,
+					content: (
+						<div className="space-y-6">
+							<SlideHeader
+								eyebrow="Pillar 5 — API-First Platform"
+								title="Developer‑first SDK for your custom lab models."
+							/>
+							<SlideBody as="ul" className="space-y-3 pt-4 text-zinc-900">
+								<li>
+									API‑first means everything is scriptable. Read, query, and
+									write lab data in a few lines of Python.
+								</li>
+								<li>
+									Your custom schemas—Compounds, Assays, Sequences—are
+									first‑class types in the SDK.
+								</li>
+								<li>
+									Fast iteration: fetch runs, analyze, and push results.
+									Validation and audit trail handled for you.
+								</li>
+								<li>
+									Full CRUD on your models with built‑in validation and audit
+									trail.
+								</li>
+							</SlideBody>
+						</div>
+					),
+				},
+				{
+					id: "right-visual",
+					padded: true,
+					content: (
+						<div className="flex h-full items-center justify-center">
+							<PythonSdkIllustration />
 						</div>
 					),
 				},
@@ -952,14 +1059,16 @@ const slides = [
 	{ id: 5, content: <NewParadigmSlide /> },
 	{ id: 6, content: <PillarModularSlide /> },
 	{ id: 7, content: <PillarAiNativeSlide /> },
-	{ id: 8, content: <PillarBranchingSlide /> },
-	{ id: 9, content: <PillarEventDrivenSlide /> },
-	{ id: 10, content: <RealWorldSlide /> },
-	{ id: 11, content: <FlywheelSlide /> },
-	{ id: 12, content: <ValuationSlide /> },
-	{ id: 13, content: <FoundationPlanSlide /> },
-	{ id: 14, content: <TeamSlide /> },
-	{ id: 15, content: <QASlide /> },
+	{ id: 8, content: <PillarIngestSlide /> },
+	{ id: 9, content: <PillarBranchingSlide /> },
+	{ id: 10, content: <PillarEventDrivenSlide /> },
+	{ id: 11, content: <PillarApiSlide /> },
+	{ id: 12, content: <RealWorldSlide /> },
+	{ id: 13, content: <FlywheelSlide /> },
+	{ id: 14, content: <ValuationSlide /> },
+	{ id: 15, content: <FoundationPlanSlide /> },
+	{ id: 16, content: <TeamSlide /> },
+	{ id: 17, content: <QASlide /> },
 ];
 
 export default function SalesDeck() {
