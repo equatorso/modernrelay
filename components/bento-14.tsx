@@ -1,5 +1,5 @@
 import { CurrencyIllustration } from "@/components/currency-illustration"
-import { DocumentIllustration } from "@/components/document-illustration"
+import { DocumentIllustation } from "@/components/document-illustration"
 import { MapIllustration } from "@/components/map-illustration"
 import { MonitoringChart } from "@/components/monitoring-chart"
 
@@ -40,12 +40,12 @@ export default function Bento14() {
                                 <p className="text-muted-foreground mt-4 text-lg">Organize and access all your important files.</p>
                             </div>
                             <div className="relative flex flex-wrap gap-4">
-                                <DocumentIllustration />
-                                <DocumentIllustration />
-                                <DocumentIllustration />
-                                <DocumentIllustration />
-                                <DocumentIllustration />
-                                <DocumentIllustration />
+                                <DocumentIllustation />
+                                <DocumentIllustation />
+                                <DocumentIllustation />
+                                <DocumentIllustation />
+                                <DocumentIllustation />
+                                <DocumentIllustation />
                             </div>
                         </div>
                     </div>
