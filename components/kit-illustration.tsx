@@ -28,7 +28,7 @@ export const KitIllustration = () => {
                         </div>
                         <div className="space-y-3">
                             <div className="text-muted-foreground border-b border-white/10 pb-3 text-sm font-medium">
-                                This year, you're walking more on average <span className="text-foreground">than you did in 2023.</span>
+                                This year, you&apos;re walking more on average <span className="text-foreground">than you did in 2023.</span>
                             </div>
                             <div className="space-y-3">
                                 <div className="space-y-1">

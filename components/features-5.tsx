@@ -9,7 +9,7 @@ export default function FeaturesSection12() {
                         <div className="z-10 max-w-xl">
                             <h2 className="mb-4 text-4xl font-semibold">Set the product direction</h2>
                             <p className="mb-8 text-lg">
-                                Monitor your application's activity in real-time. <span className="text-muted-foreground"> Instantly identify and resolve issues.</span>
+                                Monitor your application&apos;s activity in real-time. <span className="text-muted-foreground"> Instantly identify and resolve issues.</span>
                             </p>
                         </div>
 

@@ -26,7 +26,7 @@ export default function HeroSection() {
                         <div className="relative z-10 mx-auto max-w-5xl px-6">
                             <div className="text-center">
                                 <h1 className="mx-auto mt-8 max-w-xl text-balance text-4xl font-semibold md:text-5xl">Powerful Analytics for Smarter Decisions</h1>
-                                <p className="text-muted-foreground mx-auto mb-8 mt-4 max-w-xl text-balance text-lg">With Tailark's personal AI, get your projects to the finish line faster and with no context switching.</p>
+                                <p className="text-muted-foreground mx-auto mb-8 mt-4 max-w-xl text-balance text-lg">With Tailark&apos;s personal AI, get your projects to the finish line faster and with no context switching.</p>
 
                                 <div className="flex items-center justify-center gap-3 max-sm:flex-col">
                                     <Button asChild>

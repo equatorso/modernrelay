@@ -45,7 +45,7 @@ function TitleSlide() {
 					The AI-Native Lab Operating System
 				</h1>
 				<p className="text-sm text-stone-600 max-w-2xl mx-auto">
-					A New Foundation for [Client's Company Name]
+					A New Foundation for [Client&apos;s Company Name]
 				</p>
 			</div>
 		</SlideFrame>
@@ -290,7 +290,7 @@ function NewParadigmSlide() {
 		>
 			<ul className="space-y-3">
 				<li>A single source of truth that powers your entire R&D lifecycle.</li>
-				<li>It doesn't replace every tool; it unifies them.</li>
+				<li>It doesn&apos;t replace every tool; it unifies them.</li>
 				<li>
 					Designed from first principles for humans and AI agents to collaborate
 					on pristine data.
@@ -381,7 +381,7 @@ function PillarIngestSlide() {
 									scores and complete audit trails.
 								</li>
 								<li>
-									No re-keying. Data is diligence-ready the moment it's written.
+									No re-keying. Data is diligence-ready the moment it&apos;s written.
 								</li>
 							</SlideBody>
 							<div className="rounded-lg border border-foreground/10 bg-white/70 p-4 text-[12px] text-stone-600">
@@ -484,7 +484,7 @@ function PillarEventDrivenSlide() {
 						<div className="space-y-6">
 							<SlideHeader
 								eyebrow="Pillar 4 — Event-Driven Workflows"
-								title="Your lab shouldn't just store data; it should act on it."
+								title="Your lab shouldn&apos;t just store data; it should act on it."
 							/>
 
 							<SlideBody className="space-y-4 pt-4">
@@ -514,7 +514,7 @@ function PillarEventDrivenSlide() {
 											</li>
 											<li>
 												...automatically parse the raw data, perform QC,
-												calculate IC50 values, and update the experiment's
+												calculate IC50 values, and update the experiment&apos;s
 												status.
 											</li>
 											<li>
@@ -863,7 +863,7 @@ function FlywheelSlide() {
 					<li>Smarter, Data-Driven Hypotheses</li>
 				</ol>
 				<p>
-					This is more than efficiency; it's a system that compounds. Better
+					This is more than efficiency; it&apos;s a system that compounds. Better
 					data → better analysis → smarter experiments → more high-quality data.
 				</p>
 			</div>

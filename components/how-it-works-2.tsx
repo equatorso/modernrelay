@@ -69,7 +69,7 @@ export default function HowItWorksTwo() {
                             </div>
 
                             <blockquote className="before:bg-primary relative mt-12 max-w-xl pl-4 before:absolute before:inset-y-0 before:left-0 before:w-1 before:rounded-full">
-                                <p>It's the perfect fusion of simplicity and versatility, enabling us to create UIs that are as stunning as they are user-friendly.</p>
+                                <p>It&apos;s the perfect fusion of simplicity and versatility, enabling us to create UIs that are as stunning as they are user-friendly.</p>
 
                                 <div className="mt-6 flex items-center gap-2">
                                     <div className="bg-background size-6 rounded-full border p-0.5 shadow shadow-zinc-950/5">

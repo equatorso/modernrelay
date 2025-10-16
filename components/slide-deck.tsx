@@ -44,7 +44,7 @@ function HeroSlide() {
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           Powerful analytics, streamlined workflows, and intelligent automation
-          to accelerate your team's productivity.
+          to accelerate your team&apos;s productivity.
         </p>
         <Button size="lg" className="mt-8">
           Get Started Today
@@ -80,7 +80,7 @@ function ProblemStatementSlide() {
               <IntegrationsIllustration />
             </div>
             <h3 className="text-xl font-semibold">Poor Integration</h3>
-            <p className="text-muted-foreground">Tools that don't work together, creating silos</p>
+            <p className="text-muted-foreground">Tools that don&apos;t work together, creating silos</p>
           </div>
         </div>
       </div>
@@ -192,8 +192,8 @@ function SocialProofSlide() {
         <div className="max-w-3xl mx-auto">
           <blockquote className="before:bg-primary relative max-w-xl mx-auto pl-6 text-left before:absolute before:inset-y-0 before:left-0 before:w-1 before:rounded-full">
             <p className="text-xl">
-              "This platform transformed how we handle our data analytics. We've seen a 300%
-              improvement in our decision-making speed."
+              &quot;This platform transformed how we handle our data analytics. We&apos;ve seen a 300%
+              improvement in our decision-making speed.&quot;
             </p>
             <footer className="mt-6 flex items-center gap-3">
               <Avatar className="ring-foreground/10 size-10 border border-transparent shadow ring-1">

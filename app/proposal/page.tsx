@@ -66,7 +66,7 @@ export default function ProposalPage() {
 						01 — On R&D Velocity
 					</h2>
 					<p className="text-stone-700">
-						A scientific organization's rate of discovery is not limited by the brilliance of its people, but by the friction inherent in its operational loops.
+						A scientific organization&apos;s rate of discovery is not limited by the brilliance of its people, but by the friction inherent in its operational loops.
 					</p>
 					<p className="text-stone-700">
 						At its core, R&D is a cycle: <strong>Hypothesize → Design → Execute → Analyze → Learn</strong>. The velocity of this cycle dictates the pace of progress. In most organizations, the connections between these stages are manual, lossy, and untracked.
@@ -76,7 +76,7 @@ export default function ProposalPage() {
 							A protocol <strong>designed</strong> in a document is decoupled from its <strong>execution</strong> in the lab.
 						</li>
 						<li>
-							Results from an instrument are <strong>executed</strong> into a CSV, while the critical context of <em>why</em> and <em>how</em> remains trapped in a scientist's notebook or a slide deck.
+							Results from an instrument are <strong>executed</strong> into a CSV, while the critical context of <em>why</em> and <em>how</em> remains trapped in a scientist&apos;s notebook or a slide deck.
 						</li>
 						<li>
 							<strong>Analysis</strong> requires a heroic effort of data archaeology to join disparate files and reconstruct experimental history.
@@ -89,7 +89,7 @@ export default function ProposalPage() {
 						This friction is a tax on discovery. Each manual transfer of information bleeds context and introduces latency. The result is an R&D history that is a write-only ledger - a graveyard of disconnected facts rather than a queryable, living brain.
 					</p>
 					<p className="text-stone-700">
-						EQTR is engineered from first principles to solve this. Our premise is that a lab's operating system should be an isomorphic representation of the R&D process itself. Its purpose is to programmatically wire together the stages of the discovery cycle, making the connections explicit, automated, and lossless.
+						EQTR is engineered from first principles to solve this. Our premise is that a lab&apos;s operating system should be an isomorphic representation of the R&D process itself. Its purpose is to programmatically wire together the stages of the discovery cycle, making the connections explicit, automated, and lossless.
 					</p>
 				</section>
 
@@ -143,7 +143,7 @@ export default function ProposalPage() {
 									<span className="font-medium">The Problem:</span> Collaboration on a single dataset is dangerous. Multiple actors (human or AI) editing a single source of truth leads to data corruption and lost history.
 								</li>
 								<li>
-									<span className="font-medium">Our Solution:</span> <strong>"Git for Data."</strong> This branching model provides a framework for safe, concurrent work. Changes are proposed, reviewed, and merged, creating an immutable, auditable history without risk to the canonical data.
+									<span className="font-medium">Our Solution:</span> <strong>&quot;Git for Data.&quot;</strong> This branching model provides a framework for safe, concurrent work. Changes are proposed, reviewed, and merged, creating an immutable, auditable history without risk to the canonical data.
 								</li>
 							</ul>
 						</li>
@@ -154,7 +154,7 @@ export default function ProposalPage() {
 									<span className="font-medium">The Problem:</span> Data in most systems is passive. It sits in a database until a human queries it. The system is a dead logbook, not a participant in discovery.
 								</li>
 								<li>
-									<span className="font-medium">Our Solution:</span> An <strong>Event-Based Architecture</strong>. A new piece of data is an "event" that can trigger a downstream process via a pub/sub model. This transforms the system from a passive repository into an active engine.
+									<span className="font-medium">Our Solution:</span> An <strong>Event-Based Architecture</strong>. A new piece of data is an &quot;event&quot; that can trigger a downstream process via a pub/sub model. This transforms the system from a passive repository into an active engine.
 								</li>
 							</ul>
 						</li>
@@ -225,7 +225,7 @@ export default function ProposalPage() {
 									<td>
 										<ul className="list-disc pl-5 space-y-1.5">
 											<li>Branching for data and schema changes</li>
-											<li>Review/approval workflows ("pull requests" for data)</li>
+											<li>Review/approval workflows (&quot;pull requests&quot; for data)</li>
 											<li>Full, immutable audit trail for every change</li>
 										</ul>
 									</td>
@@ -250,6 +250,20 @@ export default function ProposalPage() {
 										</ul>
 									</td>
 								</tr>
+						<tr className="align-top *:px-3 *:py-2">
+							<td className="font-medium text-zinc-900">Governance &amp; Policy Engine</td>
+							<td>
+								<ul className="list-disc pl-5 space-y-1.5">
+									<li>Policy-as-code for residency, retention, and access</li>
+									<li>Granular RBAC, SSO, SCIM</li>
+									<li>Immutable audit of data and schema with exportable logs</li>
+									<li>Merge approval workflows</li>
+									<li>Customer-managed keys (optional)</li>
+									<li>Regional deployment profiles for data residency</li>
+									<li>Policy monitoring and alerts</li>
+								</ul>
+							</td>
+						</tr>
 							</tbody>
 						</table>
 					</div>
@@ -297,7 +311,7 @@ export default function ProposalPage() {
 					<ul className="list-disc space-y-1.5 pl-6 text-stone-700">
 						<li><strong>Your scientists are freed from manual data entry.</strong></li>
 						<li>
-							<strong>Everything is linked to its origin, making your data perpetually "diligence-ready."</strong>
+							<strong>Everything is linked to its origin, making your data perpetually &quot;diligence-ready.&quot;</strong>
 						</li>
 						<li>
 							<strong>Your history becomes a queryable brain, capable of answering complex questions.</strong>
@@ -331,7 +345,9 @@ export default function ProposalPage() {
 							<tbody className="divide-y divide-foreground/10 text-stone-700">
 								<tr className="align-top">
 									<td className="px-3 py-2 font-semibold text-zinc-900">Founding Partner Implementation</td>
-								<td className="px-3 py-2 whitespace-nowrap font-mono tabular-nums">$400,000</td>
+								<td className="px-3 py-2 font-mono tabular-nums">$400,000
+									<span className="block font-normal text-[11px] text-stone-500 leading-tight">− $100,000 pilot</span>
+								</td>
 								<td className="px-3 py-2 font-mono">—</td>
 									<td className="px-3 py-2">A one-time investment for the 6–12 month embedded engineering engagement.</td>
 								</tr>
@@ -372,7 +388,7 @@ export default function ProposalPage() {
 					<h2 className="font-mono text-sm font-semibold uppercase tracking-wide text-indigo-700">07 — Our Commitments</h2>
 					<ol className="list-decimal space-y-2 pl-6 text-stone-700">
 						<li>
-							<strong>Performance Guarantee:</strong> The <strong>$400,000 Annual Platform Fee for Year 1 will not be invoiced</strong> until the system is fully deployed and has met the jointly-defined success criteria established during the pilot program. Your success is the prerequisite for our payment.
+							<strong>Performance Guarantee: The Annual Platform Fee for Year 1 will not be invoiced</strong> until the system is fully deployed and has met the jointly-defined success criteria established during the pilot program. Your success is the prerequisite for our payment.
 						</li>
 						<li>
 							<strong>Business Continuity Guarantee:</strong> To fully de-risk business continuity, we will place our full source code in an escrow account. In the unlikely event that EQTR ceases operations, the source code and a perpetual license to use it will be released to you, guaranteeing you full control and business continuity.
@@ -393,14 +409,14 @@ export default function ProposalPage() {
 						08 — The Path Forward - A 90-Day Pilot
 					</h2>
 					<p className="text-stone-700">
-						Let's prove the value quickly and decisively. We propose a 90-day, hands-on pilot focused on a mission-critical workflow.
+						Let&apos;s prove the value quickly and decisively. We propose a 90-day, hands-on pilot focused on a mission-critical workflow.
 					</p>
 					<ul className="list-disc space-y-1.5 pl-6 text-stone-700">
 						<li>
-							<strong>Scope:</strong> We will dedicate our senior engineers to work with your core team. Together, we will define the schema for one critical assay, automate its data ingestion and QC, and build out a key analytical workflow.
+							<strong>Scope:</strong> Our core founding team will partner directly with yours to implement a foundational, high-impact workflow. The goal is to prove the power of the event-driven architecture by automating the full cycle for a core scientific process: from data ingestion and structuring to triggering custom analysis and generating an auditable record.
 						</li>
 						<li>
-							<strong>Investment:</strong> The investment for this 90-day pilot engagement is <strong>$100,000</strong>. This reflects the significant allocation of our senior engineering resources to your success and ensures mutual commitment. This amount will be <strong>fully credited</strong> toward your Founding Partner Implementation fee upon moving forward.
+							<strong>Investment:</strong> The investment for this 90-day pilot engagement is <strong>$100,000</strong>. This reflects the deep commitment of our founding team to your success and ensures mutual alignment. This amount will be <strong>fully credited</strong> toward your Founding Partner Implementation fee upon moving forward.
 						</li>
 					</ul>
 				</section>

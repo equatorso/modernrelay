@@ -15,7 +15,7 @@ export const MessageIllustration = () => (
         </div>
 
         <div className="bg-illustration border-border-illustration mt-2 w-fit rounded-2xl rounded-tl border p-3 text-sm">
-            Hey <span className="text-primary">@bernard</span>, I've updated the dashboard metrics.
+            Hey <span className="text-primary">@bernard</span>, I&apos;ve updated the dashboard metrics.
         </div>
     </div>
 )
