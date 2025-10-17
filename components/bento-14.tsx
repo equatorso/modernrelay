@@ -1,7 +1,7 @@
 import { CurrencyIllustration } from "@/components/currency-illustration"
 import { DocumentIllustation } from "@/components/document-illustration"
 import { MapIllustration } from "@/components/map-illustration"
-import { MonitoringChart } from "@/components/monitoring-chart"
+import { ChartIllustration } from "@/components/chart-illustration"
 
 export default function Bento14() {
     return (
@@ -32,7 +32,7 @@ export default function Bento14() {
                                 <h3 className="text-foreground text-xl font-semibold">Performance Monitoring</h3>
                                 <p className="text-muted-foreground mt-4 text-lg">Track key metrics in real-time with customizable dashboards that highlight important trends and anomalies.</p>
                             </div>
-                            <MonitoringChart />
+                            <ChartIllustration />
                         </div>
                         <div className="@3xl:gap-12 @3xl:col-span-2 row-span-2 grid grid-rows-subgrid gap-8 border-t">
                             <div>

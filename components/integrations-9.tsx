@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 import IntelliJIDEA from '@/components/logos/intellij'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { Cloudflare } from '@/components/logos/cloudflare'
+import { Supabase } from '@/components/logos/supabase'
 
 export default function IntegrationsSection() {
     return (
@@ -77,7 +77,7 @@ export default function IntegrationsSection() {
                         <IntegrationsGroup label="Hosting">
                             <div className="grid grid-cols-2 gap-2">
                                 <IntegrationCard className="">
-                                    <Cloudflare className="!w-7" />
+                                    <Supabase className="!w-7" />
                                 </IntegrationCard>
                                 <IntegrationCard className="">
                                     <Vercel />
